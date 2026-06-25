@@ -40,7 +40,7 @@
             <p class="path">115年 / 關務 / 三等 / 資訊處理 / 資料庫應用</p>
             <h1>115年公務人員特種考試關務人員三等考試：資料庫應用詳解</h1>
             <p class="summary">
-              本頁整理四題申論解題方向，包含 SQL View、BCNF 判斷與異常、資料倉儲 ETL，以及資料字典。
+              本頁收錄題目原文與四題申論解題方向，包含 SQL View、BCNF 判斷與異常、資料倉儲 ETL，以及資料字典。
             </p>
           </div>
           <div class="score-card" aria-label="配分">
@@ -77,6 +77,13 @@
               <p>配分 30 分</p>
             </div>
           </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              假設某家銀行定義了一個借貸表格（BORROWER）管理顧客借款的資料，包含借款顧客（ID）、借款編號（LoanNO）和金額（Amount）等三個屬性。請利用 SQL 語法，首先在資料庫系統中定義一個叫做 CustSummary 的視觀表（View），表達每一個顧客的借款總數量和借款總金額。其次，利用此視觀表和 SQL 查詢句，輸出身分證字號為「A123456789」的借款總金額。最後，請說明為何此視觀表只適用於查詢資料，而不適用於建立新的資料。
+            </p>
+          </section>
 
           <section class="answer-block">
             <h3>解題重點</h3>
@@ -126,6 +133,23 @@ WHERE ID = 'A123456789';</code></pre>
               <p>配分 30 分</p>
             </div>
           </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              BCNF（Boyce-Codd Normal Form）是設計關聯式資料庫綱要時常遵守的形式，請說明如何判斷一個表格是否符合 BCNF 的規定？若不符合會帶來何種問題？下列定義表格 R 的綱要、函數相依性和三筆範例資料：
+            </p>
+            <pre class="prompt-pre"><code>R = (A, B, C, D)
+F = {AB → CD, C → B}
+
+A   B   C   D
+a1  b1  c1  d1
+a1  b2  c1  d2
+a2  b1  c1  d3</code></pre>
+            <p>
+              請根據上述資訊詳加解釋為何該表格不符合 BCNF？並以範例資料明確指出此表格可能產生的問題。
+            </p>
+          </section>
 
           <section class="answer-block">
             <h3>BCNF 判斷原則</h3>
@@ -201,6 +225,13 @@ WHERE ID = 'A123456789';</code></pre>
             </div>
           </div>
 
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              資料倉儲（Data Warehouse）架構常被用來整合多種資料來源以進行資料分析，而建立資料倉儲的其中一個重要步驟是進行 ETL（Extract, Transform, Load）。首先，請詳述該步驟的功用。其次，收集資料的時機有同步（Synchronous）和非同步（asynchronous）兩種，請詳述此兩種做法的差別和優缺點。
+            </p>
+          </section>
+
           <section class="answer-block">
             <h3>ETL 的功用</h3>
             <p>
@@ -239,6 +270,13 @@ WHERE ID = 'A123456789';</code></pre>
               <p>配分 20 分</p>
             </div>
           </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              資料庫管理系統中有一種特別的資料結構稱作資料字典（Data Dictionary）。請說明資料字典中存放何種資料，並提出至少三類，以及關聯式資料庫系統通常如何實作資料字典。
+            </p>
+          </section>
 
           <section class="answer-block">
             <h3>資料字典存放的資料</h3>
