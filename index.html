@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>115年關務三等資訊處理 - 資料庫應用詳解</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="catalog" aria-label="考古題分類選單">
+        <a class="brand" href="#top" aria-label="回到頁首">
+          <span class="brand-mark">IP</span>
+          <span>
+            <strong>資訊處理考古題</strong>
+            <small>申論詳解整理</small>
+          </span>
+        </a>
+
+        <nav class="tree" aria-label="分類">
+          <button class="tree-item level-1 active" data-target="top" type="button">115年</button>
+          <button class="tree-item level-2 active" data-target="top" type="button">關務</button>
+          <button class="tree-item level-3 active" data-target="top" type="button">三等</button>
+          <button class="tree-item level-4 active" data-target="top" type="button">資訊處理</button>
+          <button class="tree-item level-5 active" data-target="top" type="button">資料庫應用</button>
+        </nav>
+
+        <div class="toc">
+          <p>題目詳解</p>
+          <button data-target="question-1" type="button">一、SQL 視觀表</button>
+          <button data-target="question-2" type="button">二、BCNF</button>
+          <button data-target="question-3" type="button">三、ETL 與資料收集</button>
+          <button data-target="question-4" type="button">四、資料字典</button>
+        </div>
+      </aside>
+
+      <main class="content" id="top">
+        <header class="hero">
+          <div>
+            <p class="path">115年 / 關務 / 三等 / 資訊處理 / 資料庫應用</p>
+            <h1>115年公務人員特種考試關務人員三等考試：資料庫應用詳解</h1>
+            <p class="summary">
+              本頁整理四題申論解題方向，包含 SQL View、BCNF 判斷與異常、資料倉儲 ETL，以及資料字典。
+            </p>
+          </div>
+          <div class="score-card" aria-label="配分">
+            <span>總分</span>
+            <strong>100</strong>
+            <small>30 + 30 + 20 + 20</small>
+          </div>
+        </header>
+
+        <section class="exam-meta" aria-label="考試資訊">
+          <div>
+            <span>年度</span>
+            <strong>115年</strong>
+          </div>
+          <div>
+            <span>考試</span>
+            <strong>公務人員特種考試關務人員考試</strong>
+          </div>
+          <div>
+            <span>等別類科</span>
+            <strong>關務三等 - 資訊處理</strong>
+          </div>
+          <div>
+            <span>科目</span>
+            <strong>資料庫應用</strong>
+          </div>
+        </section>
+
+        <article class="question" id="question-1">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>SQL 視觀表 CustSummary 與可更新性</h2>
+              <p>配分 30 分</p>
+            </div>
+          </div>
+
+          <section class="answer-block">
+            <h3>解題重點</h3>
+            <p>
+              題目要求用 BORROWER(ID, LoanNO, Amount) 建立每位顧客的借款彙總 View。彙總欄位包含借款總數量與借款總金額，因此需要
+              <code>GROUP BY ID</code>，並使用 <code>COUNT</code> 與 <code>SUM</code>。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <div class="code-title">
+              <h3>SQL 寫法</h3>
+              <button class="copy-button" data-copy="sql-1" type="button">複製 SQL</button>
+            </div>
+            <pre id="sql-1"><code>CREATE VIEW CustSummary AS
+SELECT
+  ID,
+  COUNT(LoanNO) AS LoanCount,
+  SUM(Amount) AS TotalAmount
+FROM BORROWER
+GROUP BY ID;
+
+SELECT TotalAmount
+FROM CustSummary
+WHERE ID = 'A123456789';</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>說明</h3>
+            <p>
+              <code>CustSummary</code> 是依顧客身分證字號分組後產生的彙總結果。每個 ID 只會出現一列，<code>LoanCount</code>
+              表示該顧客借款筆數，<code>TotalAmount</code> 表示該顧客所有借款金額加總。
+            </p>
+            <p>
+              這個 View 只適合查詢，不適合新增資料，原因是它不是直接對應 BORROWER 的單一基底資料列，而是由多列資料經過
+              <code>GROUP BY</code>、<code>COUNT</code>、<code>SUM</code> 聚合而成。若要在 View 中新增一列，例如
+              <code>A123456789, 3, 900000</code>，資料庫無法判斷應該在 BORROWER 中新增幾筆 LoanNO、每筆金額各是多少，因此通常不可更新或不可插入。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-2">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>BCNF 判斷、違反原因與可能問題</h2>
+              <p>配分 30 分</p>
+            </div>
+          </div>
+
+          <section class="answer-block">
+            <h3>BCNF 判斷原則</h3>
+            <p>
+              一個關聯表格若要符合 BCNF，對於每一個非平凡函數相依
+              <code>X → Y</code>，左側決定因素 <code>X</code> 都必須是該表格的超鍵。也就是說，任何能決定其他屬性的欄位組合，本身都要能唯一決定整筆資料。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>套用到題目 R(A, B, C, D)</h3>
+            <p>題目給定函數相依性：</p>
+            <ul>
+              <li><code>AB → CD</code>：AB 可決定 C 與 D，因此 AB 可決定 A、B、C、D，AB 是候選鍵。</li>
+              <li><code>C → B</code>：C 可決定 B，但 C 不能決定 A 與 D，因此 C 不是超鍵。</li>
+            </ul>
+            <p>
+              因為 <code>C → B</code> 的左側 <code>C</code> 不是超鍵，卻可以決定非鍵屬性 B，所以 R 不符合 BCNF。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>用範例資料指出問題</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>a1</td>
+                    <td>b1</td>
+                    <td>c1</td>
+                    <td>d1</td>
+                  </tr>
+                  <tr>
+                    <td>a1</td>
+                    <td>b2</td>
+                    <td>c1</td>
+                    <td>d2</td>
+                  </tr>
+                  <tr>
+                    <td>a2</td>
+                    <td>b1</td>
+                    <td>c1</td>
+                    <td>d3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              若規則 <code>C → B</code> 成立，則同一個 C 值應只能對應同一個 B 值。但範例中 <code>c1</code>
+              同時出現 <code>b1</code> 與 <code>b2</code>，表示資料已經可能產生不一致。這正是 BCNF 違反後常見的異常。
+            </p>
+            <p>
+              可能問題包括：第一，更新異常，若 <code>c1</code> 對應的 B 要改，必須更新多列，漏改就不一致；第二，插入異常，若只想新增
+              <code>C → B</code> 的規則，卻還沒有 A 與 D，可能無法自然存入；第三，刪除異常，刪除某筆資料時可能把某個 C 對應 B 的事實一併刪掉。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-3">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>資料倉儲 ETL 與同步/非同步資料收集</h2>
+              <p>配分 20 分</p>
+            </div>
+          </div>
+
+          <section class="answer-block">
+            <h3>ETL 的功用</h3>
+            <p>
+              ETL 是資料倉儲建置的重要流程，包含 Extract、Transform、Load。Extract 負責從交易系統、檔案、API、日誌或外部資料源擷取資料；
+              Transform 負責清理錯誤、統一格式、轉換編碼、去除重複、補足缺值、整合主鍵、建立衍生欄位與商業規則；Load 則將處理後資料載入資料倉儲、資料超市或分析模型。
+            </p>
+            <p>
+              ETL 的核心價值是把分散且格式不一的資料整理成可供查詢、報表、OLAP 與決策分析使用的一致資料。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>同步與非同步資料收集</h3>
+            <div class="compare">
+              <div>
+                <h4>同步 Synchronous</h4>
+                <p>
+                  資料來源產生變動時，立即同步到資料倉儲或中介系統。優點是資料新鮮度高、一致性較強，適合即時監控或風險控管。缺點是系統耦合度高，來源系統可能因同步程序而增加延遲，若目標系統異常也可能影響原交易流程。
+                </p>
+              </div>
+              <div>
+                <h4>非同步 Asynchronous</h4>
+                <p>
+                  透過排程批次、佇列、事件串流或日誌擷取，在稍後時間處理資料。優點是對來源系統影響較小、可批量處理、容錯與重試較容易。缺點是資料有時間落差，分析結果可能是最終一致而非即時一致，也需要處理延遲、重複與補償問題。
+                </p>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <article class="question" id="question-4">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>資料字典 Data Dictionary</h2>
+              <p>配分 20 分</p>
+            </div>
+          </div>
+
+          <section class="answer-block">
+            <h3>資料字典存放的資料</h3>
+            <p>
+              資料字典存放的是「描述資料的資料」，也就是資料庫的 metadata，而不是一般業務資料。它讓 DBMS 知道資料表、欄位、限制、索引、權限與物件相依性如何被定義。
+            </p>
+            <ul>
+              <li>綱要與結構資訊：資料表、欄位名稱、資料型態、長度、預設值、View 定義。</li>
+              <li>限制與關聯資訊：主鍵、外鍵、唯一限制、檢查限制、資料表之間的相依關係。</li>
+              <li>安全與權限資訊：使用者、角色、授權、物件存取權限。</li>
+              <li>效能與儲存資訊：索引、統計資料、表空間、資料檔案、分割區資訊。</li>
+              <li>程式物件資訊：Stored Procedure、Function、Trigger、Package 或排程工作。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>關聯式資料庫如何實作</h3>
+            <p>
+              關聯式資料庫通常以系統目錄表或系統 View 實作資料字典。這些資料本身也存放在資料庫中，由 DBMS 自動維護，例如建立資料表時，系統會把表格名稱、欄位型態、限制與索引寫入系統目錄。
+            </p>
+            <p>
+              使用者通常不直接修改資料字典，而是透過 SQL DDL，例如 <code>CREATE TABLE</code>、<code>ALTER TABLE</code>、<code>CREATE INDEX</code>
+              讓 DBMS 更新。查詢時則可透過標準的 <code>INFORMATION_SCHEMA</code> 或各資料庫提供的系統 catalog view 查看。
+            </p>
+          </section>
+        </article>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
