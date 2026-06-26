@@ -31,6 +31,12 @@
           <button class="tree-item level-5" data-target="question-18" type="button">資料結構</button>
           <button class="tree-item level-5" data-target="question-22" type="button">資料庫應用</button>
           <button class="tree-item level-4" data-target="question-26" type="button">資通網路與安全</button>
+          <button class="tree-item level-2" data-target="question-34" type="button">刑事警察</button>
+          <button class="tree-item level-3" data-target="question-34" type="button">三等</button>
+          <button class="tree-item level-4" data-target="question-34" type="button">數位鑑識組</button>
+          <button class="tree-item level-5" data-target="question-34" type="button">資料庫應用</button>
+          <button class="tree-item level-5" data-target="question-38" type="button">網路與資訊安全</button>
+          <button class="tree-item level-5" data-target="question-42" type="button">電腦通訊</button>
           <button class="tree-item level-3" data-target="question-13" type="button">四等</button>
           <button class="tree-item level-4" data-target="question-13" type="button">資訊處理（選試英文）</button>
           <button class="tree-item level-5" data-target="question-13" type="button">程式設計概要</button>
@@ -72,6 +78,18 @@
           <button data-target="question-31" type="button">資訊管理二、ISMS 導入說明</button>
           <button data-target="question-32" type="button">資訊管理三、1999 AI 資料清洗</button>
           <button data-target="question-33" type="button">資訊管理四、SaaS 衰退分析</button>
+          <button data-target="question-34" type="button">刑警資料庫一、SQL 查詢</button>
+          <button data-target="question-35" type="button">刑警資料庫二、File Scan 與 Index</button>
+          <button data-target="question-36" type="button">刑警資料庫三、PK 與級聯刪除</button>
+          <button data-target="question-37" type="button">刑警資料庫四、MongoDB 轉 3NF</button>
+          <button data-target="question-38" type="button">刑警資安一、雜湊與生日攻擊</button>
+          <button data-target="question-39" type="button">刑警資安二、偵察與協定攻擊</button>
+          <button data-target="question-40" type="button">刑警資安三、Evil Twin 與 WPA</button>
+          <button data-target="question-41" type="button">刑警資安四、事件通報與管理</button>
+          <button data-target="question-42" type="button">刑警通訊一、CSMA/CD 與 CSMA/CA</button>
+          <button data-target="question-43" type="button">刑警通訊二、多工與展頻</button>
+          <button data-target="question-44" type="button">刑警通訊三、滑動視窗</button>
+          <button data-target="question-45" type="button">刑警通訊四、Best Effort</button>
         </div>
       </aside>
 
@@ -81,13 +99,13 @@
             <p class="path">115年 / 關務 / 資訊處理 / 三等、四等</p>
             <h1>115年公務人員特種考試關務人員資訊處理：題解整理</h1>
             <p class="summary">
-              本頁收錄題目原文與解題方向，包含關務三等、身障三等與四等資訊處理相關科目，並新增身障三等資通網路與安全。
+              本頁收錄題目原文與解題方向，包含關務、身障、刑事警察三等，以及四等資訊處理相關科目。
             </p>
           </div>
           <div class="score-card" aria-label="收錄題數">
             <span>收錄</span>
-            <strong>33</strong>
-            <small>申論 32 題 + 選擇題 40 題</small>
+            <strong>45</strong>
+            <small>申論 44 題 + 選擇題 40 題</small>
           </div>
         </header>
 
@@ -98,15 +116,15 @@
           </div>
           <div>
             <span>考試</span>
-            <strong>公務人員特種考試關務人員、身心障礙人員考試</strong>
+            <strong>公務人員特種考試關務人員、身心障礙人員、刑事警察人員考試</strong>
           </div>
           <div>
             <span>等別類科</span>
-            <strong>關務三等、關務四等、身障三等 - 資訊處理；身障三等 - 資通網路與安全</strong>
+            <strong>關務三等、關務四等、身障三等 - 資訊處理；身障三等 - 資通網路與安全；刑事警察三等 - 數位鑑識組</strong>
           </div>
           <div>
             <span>科目</span>
-            <strong>資料庫應用、資通網路、資料結構、程式設計概要、計算機概要、資通網路與安全</strong>
+            <strong>資料庫應用、資通網路、資料結構、程式設計概要、計算機概要、資通網路與安全、網路與資訊安全、電腦通訊、資料庫管理與運用</strong>
           </div>
         </section>
 
@@ -1934,6 +1952,625 @@ ORDER BY 介紹會員人數 DESC;</code></pre>
             <h3>結論</h3>
             <p>
               SaaS 股價大跌與裁員不代表 SaaS 模式失敗，而是市場從只看高速成長，轉向同時檢驗成長、獲利、留存、差異化與現金流。未來能勝出的 SaaS 公司，需具備明確垂直場景、高轉換成本、強整合能力、健康單位經濟、資安合規信任，以及能真正創造生產力的 AI 功能。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-34">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>雜湊函數與生日攻擊</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請回答雜湊函數的應用、理想密碼雜湊函數的關鍵特性，以及生日攻擊的意義、威脅與例子。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>雜湊函數的應用與特性</h3>
+            <p>
+              密碼學雜湊函數會把任意長度輸入轉換為固定長度摘要，例如 SHA-256 會產生 256 位元摘要。常見應用包括檔案完整性驗證、數位簽章前的摘要計算、密碼儲存、訊息認證碼、區塊鏈與交易鏈結、惡意程式特徵比對、電子蒐證中的映像檔完整性確認，以及軟體下載校驗。
+            </p>
+            <ul>
+              <li><strong>決定性：</strong>同一輸入必須得到同一輸出，否則無法做驗證與比對。</li>
+              <li><strong>快速計算：</strong>合法使用者需能有效率地計算摘要，例如驗證大型檔案或大量日誌。</li>
+              <li><strong>抗原像性：</strong>已知雜湊值時，應難以反推出原始輸入，避免由摘要回推密碼或文件。</li>
+              <li><strong>抗第二原像性：</strong>已知某訊息時，應難以找到另一個不同訊息具有相同摘要，避免文件被替換。</li>
+              <li><strong>抗碰撞性：</strong>應難以找到任意兩個不同輸入具有相同摘要，這是數位簽章與憑證安全的重要基礎。</li>
+              <li><strong>雪崩效應：</strong>輸入只改一個位元，輸出也應大幅改變，避免攻擊者從輸出差異推測輸入關係。</li>
+            </ul>
+            <p>
+              例如下載作業系統 ISO 時，官方提供 SHA-256 值，使用者可計算下載檔摘要比對是否一致；電子證據鑑識時，也會對原始硬碟映像計算雜湊，以證明後續分析未改變證據。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>生日攻擊與資安威脅</h3>
+            <p>
+              生日攻擊是利用機率上的生日悖論：若雜湊輸出長度為 n 位元，理論上不是需要嘗試 2^n 次才可能找到碰撞，而是約 2^(n/2) 次就有相當機率找到兩個不同輸入具有相同雜湊值。因此雜湊位元數若太短，碰撞攻擊成本會大幅下降。
+            </p>
+            <p>
+              對網路資訊應用而言，生日攻擊威脅主要在於碰撞可破壞完整性與不可否認性。例如攻擊者準備兩份內容不同但雜湊值相同的文件，一份是正常合約，一份是對攻擊者有利的合約；若系統只簽署文件摘要，攻擊者可能用另一份碰撞文件替換。又如舊式 MD5、SHA-1 已被證明不再適合安全用途，若仍用於憑證、程式碼簽章或檔案完整性驗證，可能遭偽造或替換。
+            </p>
+            <p>
+              防禦上應使用足夠長度且未被破解的雜湊演算法，例如 SHA-256、SHA-384、SHA-3；密碼儲存則不應只做一般雜湊，而應使用 salt 搭配 Argon2、bcrypt 或 PBKDF2 等密碼雜湊函數，提高暴力破解與碰撞利用成本。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-35">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>網路安全偵察與網路協定攻擊</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請說明網路安全偵察、被動偵查與主動偵查差異，以及網路協定攻擊的常見方法與防禦策略。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>網路安全偵察</h3>
+            <p>
+              網路安全偵察是攻擊或滲透測試前蒐集目標資訊的階段，目的在了解目標的網域、IP 範圍、系統版本、開放服務、組織人員、供應商、弱點與攻擊面。偵察品質越高，後續攻擊越容易精準化，因此防守方也會透過偵察了解自身暴露面。
+            </p>
+            <p>
+              被動偵查是不直接與目標系統互動，主要利用公開來源，例如 WHOIS、DNS 紀錄、搜尋引擎、社群平台、GitHub 洩漏、公開憑證透明度紀錄、新聞稿與招募資訊。其優點是較不易被目標偵測，但資訊可能過時。
+            </p>
+            <p>
+              主動偵查會直接對目標產生連線或封包，例如 ping sweep、port scan、banner grabbing、漏洞掃描、目錄列舉、DNS zone transfer 嘗試等。它能取得較即時準確資訊，但容易被防火牆、IDS/IPS、SIEM 或流量監控發現。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>網路協定攻擊與防禦</h3>
+            <p>
+              網路協定攻擊是利用 TCP/IP、ARP、DNS、DHCP、ICMP、HTTP、TLS、路由協定等設計缺陷、實作漏洞或錯誤設定進行攻擊。常見方法如下：
+            </p>
+            <ul>
+              <li><strong>ARP Spoofing：</strong>偽造 ARP 回應，使流量經過攻擊者主機，造成中間人攻擊。可用 Dynamic ARP Inspection、靜態 ARP、交換器分段與偵測工具防禦。</li>
+              <li><strong>DNS Spoofing/Poisoning：</strong>竄改解析結果導向惡意網站。可部署 DNSSEC、可信 resolver、DoH/DoT 與 DNS 異常監控。</li>
+              <li><strong>TCP SYN Flood：</strong>大量半開連線耗盡伺服器資源。可使用 SYN cookies、連線速率限制、DDoS 防護與負載平衡。</li>
+              <li><strong>DHCP Starvation/Rogue DHCP：</strong>耗盡租約或架設假 DHCP 發送錯誤閘道與 DNS。可用 DHCP Snooping、Port Security 與網路接入控管。</li>
+              <li><strong>ICMP 攻擊：</strong>利用 ping flood、Smurf 或偵測封包探測網段。可設定速率限制、過濾廣播回應與監控異常流量。</li>
+              <li><strong>TLS 降級或弱加密：</strong>誘導使用舊版協定或弱 cipher。可停用 SSL/TLS 舊版、啟用 HSTS、使用強 cipher suite 與憑證檢查。</li>
+            </ul>
+            <p>
+              整體防禦策略包括最小化暴露服務、更新修補、網路分段、強化交換器與路由器設定、部署 IDS/IPS 與 SIEM、進行封包與日誌監控，並定期執行弱點掃描與組態稽核。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-36">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>Evil Twin 攻擊與 WPA 安全特性</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請說明 Evil Twin 攻擊的意義與威脅，以及 WPA 與相關標準如何提供無線網路安全。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>Evil Twin 攻擊</h3>
+            <p>
+              Evil Twin 是攻擊者架設一個名稱、訊號或登入頁看似合法的假 Wi-Fi 熱點，誘使使用者連線。例如在咖啡店、機場或飯店架設與官方 SSID 相同或相似的基地台，並以較強訊號吸引用戶。使用者一旦連上，攻擊者可能監看流量、導向假登入頁、竊取帳密，或進行中間人攻擊。
+            </p>
+            <ul>
+              <li>竊取帳號密碼、Cookie、表單資料與未加密機敏內容。</li>
+              <li>透過假 captive portal 要求輸入社群、電子郵件或企業帳號。</li>
+              <li>進行 DNS spoofing，把使用者導向釣魚網站或惡意更新頁。</li>
+              <li>降級或攔截部分未妥善驗證的連線，造成資料外洩。</li>
+              <li>在企業環境中蒐集憑證，進一步攻擊 VPN、郵件或內部系統。</li>
+            </ul>
+            <p>
+              使用者應避免在公共 Wi-Fi 傳輸機敏資料，確認官方 SSID，使用 VPN，檢查 HTTPS 憑證，不忽略瀏覽器警告；企業則可使用 WPA-Enterprise、憑證式驗證與無線入侵偵測系統偵測假 AP。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>WPA 與三項安全特性</h3>
+            <p>
+              WPA 是 Wi-Fi Protected Access，用來改善早期 WEP 的弱點，後續包含 WPA2 與 WPA3 等標準。WPA 相關標準主要提供三項安全特性：身分驗證、機密性與完整性。
+            </p>
+            <ul>
+              <li><strong>身分驗證 Authentication：</strong>確認連線者與基地台身分。家用環境常用 WPA-Personal 的預共享金鑰；企業環境常用 WPA-Enterprise 搭配 802.1X、EAP 與 RADIUS，讓每位使用者以個別帳號或憑證驗證。</li>
+              <li><strong>機密性 Confidentiality：</strong>透過加密保護無線傳輸內容。WPA 使用 TKIP 作為過渡，WPA2 使用 AES-CCMP，WPA3 則提供更強的加密與 SAE 握手，降低密碼猜測與離線破解風險。</li>
+              <li><strong>完整性 Integrity：</strong>確認封包未被竄改，避免攻擊者修改資料或插入偽造封包。TKIP 的 MIC、CCMP 的訊息完整性機制及重播保護可降低封包竄改與 replay attack。</li>
+            </ul>
+            <p>
+              實務上應優先使用 WPA3 或 WPA2-AES，避免 WEP、WPA-TKIP 與弱密碼；企業網路應使用 802.1X、憑證驗證、用戶分流與無線監控，提高對 Evil Twin 與密碼破解的防護能力。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-37">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>資安事件通報應變與 ISO/IEC 27035</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請說明我國資安事件通報與應變依據之法律與辦法、事件分級與通報內容，並說明 ISO/IEC 27035 事件管理生命週期的目的與優勢。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>我國法規與通報內容</h3>
+            <p>
+              我國政府機關資安事件通報與應變主要依據《資通安全管理法》，並由主管機關訂定《資通安全事件通報及應變辦法》加以規範。其精神是要求公務機關與特定非公務機關在發生資安事件時，依事件嚴重程度完成通報、處置、復原與後續改善。
+            </p>
+            <p>
+              資安事件通常依影響程度分級，考量因素包括核心業務是否中斷、機敏資料是否外洩或遭竄改、影響範圍、是否涉及關鍵基礎設施、是否造成民眾權益重大損害，以及事件是否持續擴大。低等級事件可能只影響局部服務或少量設備；高等級事件則可能造成重大服務中斷、大量個資外洩、核心系統遭入侵或關鍵基礎設施受影響。
+            </p>
+            <p>
+              通報內容應包括發現時間、通報機關、事件類型、影響系統與服務、影響範圍、可能原因、已知攻擊手法、受影響資料類型、初步處置措施、聯絡窗口、預估復原時間、後續應變計畫與需要支援事項。完成處置後，還應提出根因分析、復原狀態、改善措施與防止再發方案。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>ISO/IEC 27035 事件管理生命週期</h3>
+            <p>
+              ISO/IEC 27035 的目的，是提供組織一套系統化方法來準備、偵測、回報、評估、回應與改善資訊安全事件管理能力。它強調事件不是只靠臨時救火，而是要事前建立角色、流程、通報管道、證據保存、溝通機制與持續改善制度。
+            </p>
+            <ul>
+              <li><strong>準備：</strong>建立政策、SOP、責任分工、聯絡清單、工具、演練與教育訓練。</li>
+              <li><strong>偵測與通報：</strong>透過監控、日誌、告警、使用者回報或外部通知發現事件，並依流程通報。</li>
+              <li><strong>評估與決策：</strong>判斷事件類型、嚴重性、影響範圍與優先順序。</li>
+              <li><strong>應變處置：</strong>進行圍堵、根除、復原、證據保存、溝通與必要的對外通報。</li>
+              <li><strong>事後檢討：</strong>進行根因分析、修補弱點、更新規則與訓練內容，降低再發機率。</li>
+            </ul>
+            <p>
+              遵循生命週期的優勢包括縮短事件發現與反應時間、降低損害擴大、確保符合法規與稽核要求、保存數位證據、改善跨部門協作、累積事件知識庫，並讓組織從每次事件中持續提升防護成熟度。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-38">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>CSMA/CD 與 CSMA/CA 的原理與應用</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              在多重存取技術中，衝撞偵測（Collision Detection, CD）與衝撞迴避（Collision Avoidance, CA）常用於提升區域網路傳輸效能。請說明兩者基本工作原理、各自適合的傳輸媒介與原因，並以現有區域網路標準說明其應用。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>基本工作原理</h3>
+            <p>
+              <strong>CSMA/CD</strong> 的核心是「先聽再傳，邊傳邊聽」。節點傳送前先偵測媒介是否閒置；若閒置就開始傳送。傳送過程中仍持續監聽媒介，若發現訊號異常代表發生碰撞，便送出 jam signal 通知其他節點，停止傳送，等待隨機退避時間後再重傳。
+            </p>
+            <p>
+              <strong>CSMA/CA</strong> 的核心是「先聽再等，盡量避免碰撞」。節點傳送前先偵測通道，若通道閒置仍需等待 IFS 與隨機 backoff；倒數期間若通道變忙則暫停倒數，等通道再次閒置後繼續。無線網路也可使用 RTS/CTS 預約通道，降低隱藏節點造成的碰撞。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>適合媒介與原因</h3>
+            <ul>
+              <li><strong>CD 適合有線共享媒介：</strong>例如早期同軸乙太網路或 hub-based Ethernet。因為有線媒介中節點可以較可靠地同時傳送與偵測線路上是否有碰撞。</li>
+              <li><strong>CA 適合無線媒介：</strong>無線裝置通常難以邊傳邊聽，因自身傳送訊號遠強於接收訊號，而且存在 hidden terminal 與 exposed terminal 問題，因此更適合在傳送前用退避與 RTS/CTS 降低碰撞機率。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>現有標準應用</h3>
+            <p>
+              <strong>IEEE 802.3 Ethernet</strong> 在早期半雙工共享式乙太網路中使用 CSMA/CD。現代交換式全雙工乙太網路中，每個連線通常是點對點且可同時收發，已不需要 CSMA/CD。
+            </p>
+            <p>
+              <strong>IEEE 802.11 Wi-Fi</strong> 使用 CSMA/CA。無線站台會進行載波偵測、IFS 等待、隨機退避、ACK 確認，必要時使用 RTS/CTS 處理隱藏節點問題，這正是 CA 在無線區域網路中的典型應用。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-39">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>多工、展頻與 FHSS</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              試述多工（Multiplexing）與展頻（Spread Spectrum）之差異，說明跳頻展頻 FHSS 的工作原理；若一 FHSS 系統共有 8 通道，其跳頻碼有 30 位元，請問每週期會跳躍頻道幾次？
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>多工與展頻差異</h3>
+            <p>
+              <strong>多工</strong> 是讓多個使用者或多路訊號共享同一傳輸媒介的資源分配技術，重點是提高通道利用率。例如 TDM 以時間切割、FDM 以頻帶切割、CDM 以碼序列區分使用者。
+            </p>
+            <p>
+              <strong>展頻</strong> 則是把原本較窄頻的訊號擴展到較寬頻帶上傳送，重點在抗干擾、抗竊聽、降低窄頻干擾影響與提升隱蔽性。展頻不只是多人共享通道，也是一種訊號處理與通訊安全技術。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>FHSS 工作原理</h3>
+            <p>
+              FHSS（Frequency Hopping Spread Spectrum）會把可用頻帶切成多個頻道，傳送端與接收端依相同的 pseudo-random hopping sequence 在不同頻道間快速跳動。雙方只要時間同步且使用相同跳頻碼，就能在同一時刻切到同一頻道完成通訊。
+            </p>
+            <p>
+              若某些頻道受到干擾，FHSS 只會在停留於該頻道時受影響；下一跳切到其他頻道後即可繼續傳送，因此具有抗窄頻干擾與降低被攔截的能力。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>跳頻次數計算</h3>
+            <p>
+              共有 8 個通道，表示每次選擇一個頻道需要 <code>log2(8) = 3</code> 位元。跳頻碼共有 30 位元，因此每週期可切成 <code>30 / 3 = 10</code> 組頻道選擇碼。
+            </p>
+            <p>
+              所以此 FHSS 系統每週期會跳躍 <strong>10 次</strong>。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-40">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>Go-back-N ARQ 與滑動視窗效能</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              滑動視窗是流量控制普遍使用的機制。請解釋 Go-back-N ARQ 中傳送端與接收端如何使用滑動視窗機制，並說明滑動視窗大小與 ARQ 傳輸效能的關係。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>Go-back-N 的滑動視窗</h3>
+            <p>
+              在 Go-back-N ARQ 中，傳送端維持大小為 N 的傳送視窗，可在尚未收到 ACK 前連續送出多個 frame。視窗左端代表最早尚未確認的 frame，右端代表目前可送出的最大序號範圍。當傳送端收到累積 ACK 後，表示該 ACK 之前的 frame 都已正確收到，視窗就向前滑動並允許傳送新的 frame。
+            </p>
+            <p>
+              接收端通常只接受「下一個期望序號」的 frame，接收視窗大小可視為 1。若收到正確且按序的 frame，就交給上層並回 ACK；若收到錯序 frame，通常丟棄並重複回覆最後正確接收的 ACK。若傳送端等待某個 ACK 逾時，會從該遺失 frame 開始，把之後已送出但未確認的 frame 全部重傳，這就是 Go-back-N 的名稱來源。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>視窗大小與效能</h3>
+            <p>
+              視窗太小時，傳送端送出少量 frame 後就必須等待 ACK，若傳播延遲大，通道會閒置，吞吐量下降。適當增加視窗大小可讓傳送端在等待 ACK 期間持續送資料，使管線保持滿載，提高頻寬利用率。
+            </p>
+            <p>
+              但視窗不是越大越好。視窗過大時，若發生錯誤或遺失，Go-back-N 會重傳該錯誤 frame 之後的多個 frame，造成更多浪費；也會需要較大的序號空間與緩衝管理。理想視窗大小應能覆蓋 bandwidth-delay product，使傳送端在一個 RTT 內有足夠資料可送，同時避免錯誤率高時重傳成本過大。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-41">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>IP Best Effort Service 與容錯能力</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              網際網路的網路層 IP 提供最大努力服務（Best Effort Service）。請敘述其內涵，並申論為何 IP 的 Best Effort Service 可以提供網際網路極大容錯能力。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>Best Effort Service 的內涵</h3>
+            <p>
+              IP 的 Best Effort Service 是指網路層會盡力把每個 packet 依目的位址轉送到目的地，但不保證一定送達、不保證順序、不保證延遲、不保證頻寬，也不保證不重複。若路由器壅塞、錯誤、TTL 到期或找不到路由，封包可能被丟棄。
+            </p>
+            <p>
+              因此 IP 本身是 connectionless 與 datagram-based 的服務。可靠性、重傳、排序、流量控制與壅塞控制主要交由端系統的上層協定處理，例如 TCP；若應用更重視即時性，也可使用 UDP 自行決定錯誤處理方式。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>為何能提供極大容錯能力</h3>
+            <p>
+              Best Effort 的設計讓網路核心保持簡單。路由器不需要為每條連線保留狀態，也不必在網路層維護端到端可靠傳輸。當部分路由器、鏈路或路徑故障時，路由協定可重新收斂，封包可改走其他路徑；網路不必等待每一條連線狀態逐一重建。
+            </p>
+            <p>
+              這種 end-to-end principle 把複雜控制放在端點，把中間網路做成鬆耦合、可替換、可繞路的 packet switching 架構。即使某些封包遺失，上層協定也能重傳或由應用容忍遺失，因此局部故障不會讓整個網際網路停止運作。
+            </p>
+            <p>
+              此外，Best Effort 不要求所有底層網路提供相同可靠性，IP 可以跑在乙太網路、Wi-Fi、光纖、行動網路、衛星或其他鏈路上。不同網路只要能轉送 IP 封包即可互連，這種異質網路整合能力也是網際網路高擴充性與高容錯性的核心原因。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-42">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>Product 與 Manufacturer 的 SQL 查詢</h2>
+              <p>配分 30 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              某公司關聯式資料庫定義產品表格與製造商表格：
+              <code>Product(ProductID, ProductName, Category, StockQuantity, ManufactureID)</code>、
+              <code>Manufacturer(ManufacturerID, ManuName, Phone, Address)</code>。其中只有
+              <code>StockQuantity</code> 為數值型態，其餘皆為字串型態。請以 SQL 查詢各類別產品數、庫存不足產品與製造商資料，以及總庫存量少於 1000 的類別。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3> 每一個類別各有幾種產品</h3>
+            <pre><code>SELECT
+  Category,
+  COUNT(*) AS ProductCount
+FROM Product
+GROUP BY Category;</code></pre>
+            <p>
+              因每筆 Product tuple 代表一種特定產品，所以依 <code>Category</code> 分組後，以 <code>COUNT(*)</code> 計算該類別下的產品種類數。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3> 庫存量不足產品與製造商聯絡資料</h3>
+            <pre><code>SELECT
+  p.ProductID,
+  m.ManuName,
+  m.Phone
+FROM Product AS p
+JOIN Manufacturer AS m
+  ON p.ManufactureID = m.ManufacturerID
+WHERE p.StockQuantity &lt; 10;</code></pre>
+            <p>
+              題目假設安全庫存量為 10，因此「不足」可解釋為庫存量小於 10。產品表格只有製造商編號，需與 Manufacturer 以製造商編號連接，才能輸出製造商名稱與電話。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3> 總庫存量少於 1000 的類別</h3>
+            <pre><code>SELECT
+  Category
+FROM Product
+GROUP BY Category
+HAVING SUM(StockQuantity) &lt; 1000;</code></pre>
+            <p>
+              <code>WHERE</code> 是對單筆資料篩選，<code>HAVING</code> 則是對分組後的彙總結果篩選。本題要判斷每一類別所有產品的總庫存量，所以使用 <code>SUM</code> 搭配 <code>HAVING</code>。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-43">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>File Scan 與 ProductID Index 查詢策略比較</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              對 <code>Product(ProductID, ProductName, Price)</code> 執行
+              <code>SELECT Price FROM Product WHERE ProductID = 'P01';</code>。請列出直接掃描資料檔案與使用 ProductID 索引兩種策略的完整步驟，並依查詢效率、空間需求與系統維護難易度比較優劣。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>策略一：File Scan</h3>
+            <ol>
+              <li>從 Product 資料檔案的第一個資料頁開始讀取。</li>
+              <li>逐筆檢查 tuple 的 <code>ProductID</code> 是否等於 <code>'P01'</code>。</li>
+              <li>若找到符合的 tuple，取出該筆資料的 <code>Price</code> 欄位。</li>
+              <li>若 <code>ProductID</code> 是主鍵或唯一值，找到後即可停止；若沒有唯一性保證，需掃描到檔案結尾。</li>
+              <li>輸出查得的 <code>Price</code>。</li>
+            </ol>
+          </section>
+
+          <section class="answer-block">
+            <h3>策略二：使用 ProductID 索引</h3>
+            <ol>
+              <li>以查詢條件 <code>ProductID = 'P01'</code> 作為搜尋鍵，到 ProductID 索引中查找。</li>
+              <li>若索引是 B+ tree，從根節點往下找到葉節點；若是 hash index，依雜湊值找到對應 bucket。</li>
+              <li>在索引項目中取得資料記錄的位置，例如 RID、page id 與 slot id。</li>
+              <li>依該位置讀取 Product 資料頁，取出對應 tuple。</li>
+              <li>輸出該 tuple 的 <code>Price</code> 欄位。</li>
+            </ol>
+          </section>
+
+          <section class="answer-block">
+            <h3>優劣比較</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>面向</th>
+                    <th>File Scan</th>
+                    <th>使用 ProductID Index</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>查詢效率</td>
+                    <td>需逐頁逐筆檢查，資料量大時通常為 O(n)，效率較差。</td>
+                    <td>可快速定位目標資料。B+ tree 約 O(log n)，hash index 在適合情況下可接近 O(1)。</td>
+                  </tr>
+                  <tr>
+                    <td>空間需求</td>
+                    <td>不需額外索引空間。</td>
+                    <td>需儲存索引節點或雜湊結構，會增加磁碟空間。</td>
+                  </tr>
+                  <tr>
+                    <td>系統維護</td>
+                    <td>新增、刪除、修改資料時不需同步維護索引，較簡單。</td>
+                    <td>資料異動時需更新索引，可能產生分裂、合併或重整成本，維護較複雜。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              因本查詢以 ProductID 精確查找單一產品，若資料量夠大且 ProductID 上已有索引，策略二通常較有效率；但若資料表很小，file scan 的成本也可能可以接受。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-44">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>Primary Key、Not Null 與借閱資料級聯刪除</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              圖書館資料庫有 <code>BOOK</code> 與 <code>BORROWER</code> 表格。請說明 <code>primary key</code> 與 <code>not null</code> 對建立資料的限制，並修正 SQL，使 BOOK 某書資料被刪除時，BORROWER 中對應借閱資料也自動刪除。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>限制說明</h3>
+            <p>
+              <code>BOOK</code> 的主鍵是 <code>ISBN</code>，因此每本書的 ISBN 不可重複，也不可為 NULL。新增 BOOK 資料時，資料庫會拒絕 ISBN 空值或與既有 ISBN 相同的資料。
+            </p>
+            <p>
+              <code>BORROWER</code> 的主鍵是 <code>(No, ISBN)</code>，表示同一位借閱者與同一本書的組合不可重複，且 <code>No</code> 與 <code>ISBN</code> 都不可為 NULL。也就是說，不能建立沒有借閱者編號或沒有書籍 ISBN 的借閱紀錄，也不能重複建立相同借閱者借同一本書的紀錄。
+            </p>
+            <p>
+              <code>DueDate date not null</code> 表示到期日欄位一定要有值。新增 BORROWER 資料時，若未提供 <code>DueDate</code> 或填入 NULL，會違反 NOT NULL 限制。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>修正後 SQL</h3>
+            <pre><code>CREATE TABLE BOOK (
+  ISBN char(13),
+  Title varchar(20),
+  Publisher varchar(20),
+  Price numeric(8, 2),
+  PRIMARY KEY (ISBN)
+);
+
+CREATE TABLE BORROWER (
+  No char(5),
+  ISBN char(13),
+  DueDate date NOT NULL,
+  PRIMARY KEY (No, ISBN),
+  FOREIGN KEY (ISBN)
+    REFERENCES BOOK(ISBN)
+    ON DELETE CASCADE
+);</code></pre>
+            <p>
+              關鍵是替 <code>BORROWER.ISBN</code> 建立參考 <code>BOOK.ISBN</code> 的外鍵，並加上 <code>ON DELETE CASCADE</code>。如此當某筆 BOOK 資料被刪除時，所有引用該 ISBN 的借閱紀錄會由資料庫自動刪除。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-45">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>MongoDB 貼文資料轉換為 3NF 關聯設計</h2>
+              <p>配分 20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              原系統以 MongoDB 儲存貼文 JSON，一則貼文包含作者、內容、多個標籤、按讚者與建立時間。若改以關聯式資料庫實作，請設計符合 3NF 的關聯，列出欄位、主鍵、函數相依性，並說明為何符合 3NF。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>關聯設計</h3>
+            <pre><code>USER(
+  UserID PK,
+  UserName
+)
+
+POST(
+  PostID PK,
+  AuthorID FK REFERENCES USER(UserID),
+  Content,
+  CreatedAt
+)
+
+TAG(
+  TagName PK
+)
+
+POST_TAG(
+  PostID PK/FK REFERENCES POST(PostID),
+  TagName PK/FK REFERENCES TAG(TagName)
+)
+
+POST_LIKE(
+  PostID PK/FK REFERENCES POST(PostID),
+  UserID PK/FK REFERENCES USER(UserID)
+)</code></pre>
+            <p>
+              範例中的作者 <code>a1 Mary</code> 可放入 USER；貼文主體放入 POST；<code>tags</code> 是多值屬性，拆成 TAG 與 POST_TAG；<code>likedby</code> 也是一篇貼文對多位使用者的多值關係，拆成 POST_LIKE。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>函數相依性</h3>
+            <ul>
+              <li><code>UserID → UserName</code></li>
+              <li><code>PostID → AuthorID, Content, CreatedAt</code></li>
+              <li><code>TagName → TagName</code>，標籤名稱本身作為識別。</li>
+              <li><code>(PostID, TagName)</code> 為 POST_TAG 的主鍵，沒有非鍵屬性。</li>
+              <li><code>(PostID, UserID)</code> 為 POST_LIKE 的主鍵，沒有非鍵屬性。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>符合 3NF 的理由</h3>
+            <p>
+              在 USER 中，使用者姓名只依賴使用者代號；在 POST 中，貼文內容、作者與建立時間只依賴貼文代號，不會把作者姓名重複存於每篇貼文，因此避免 <code>PostID → AuthorID → UserName</code> 的傳遞相依。標籤與按讚名單原本是陣列型多值資料，拆成交叉表後，每列只表示一個貼文與一個標籤或使用者的關係，符合第一正規化。
+            </p>
+            <p>
+              POST_TAG 與 POST_LIKE 的主鍵都是複合鍵，且沒有非鍵屬性，因此不會有部分相依或傳遞相依。各表中每個非鍵屬性都完全依賴該表的鍵，且不依賴其他非鍵屬性，所以整體設計符合 3NF。
             </p>
           </section>
         </article>
