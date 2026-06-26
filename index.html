@@ -25,6 +25,7 @@
           <button class="tree-item level-5 active" data-target="top" type="button">資料庫應用</button>
           <button class="tree-item level-5" data-target="question-5" type="button">資通網路</button>
           <button class="tree-item level-5" data-target="question-9" type="button">資料結構</button>
+          <button class="tree-item level-5" data-target="question-13" type="button">程式設計概要</button>
         </nav>
 
         <div class="toc">
@@ -41,6 +42,10 @@
           <button data-target="question-10" type="button">結構二、Complete Binary Tree</button>
           <button data-target="question-11" type="button">結構三、Graph 表示法</button>
           <button data-target="question-12" type="button">結構四、BST 與 RBT</button>
+          <button data-target="question-13" type="button">四等一、C++ 輸出</button>
+          <button data-target="question-14" type="button">四等二、矩形重疊</button>
+          <button data-target="question-15" type="button">四等三、Pascal 遞迴</button>
+          <button data-target="question-16" type="button">四等四、隱私比較</button>
         </div>
       </aside>
 
@@ -48,15 +53,15 @@
         <header class="hero">
           <div>
             <p class="path">115年 / 關務 / 三等 / 資訊處理</p>
-            <h1>115年公務人員特種考試關務人員三等考試：題解整理</h1>
+            <h1>115年公務人員特種考試關務人員資訊處理：題解整理</h1>
             <p class="summary">
-              本頁收錄題目原文與申論解題方向，包含資料庫應用、資通網路，以及資料結構的時間複雜度、樹、圖形與平衡搜尋樹。
+              本頁收錄題目原文與申論解題方向，包含三等資料庫應用、資通網路、資料結構，以及四等程式設計概要。
             </p>
           </div>
           <div class="score-card" aria-label="收錄題數">
             <span>收錄</span>
-            <strong>12</strong>
-            <small>資料庫 4 題 + 資通網路 4 題 + 資料結構 4 題</small>
+            <strong>16</strong>
+            <small>三等 12 題 + 四等 4 題</small>
           </div>
         </header>
 
@@ -71,11 +76,11 @@
           </div>
           <div>
             <span>等別類科</span>
-            <strong>關務三等 - 資訊處理</strong>
+            <strong>關務三等、四等 - 資訊處理</strong>
           </div>
           <div>
             <span>科目</span>
-            <strong>資料庫應用、資通網路、資料結構</strong>
+            <strong>資料庫應用、資通網路、資料結構、程式設計概要</strong>
           </div>
         </section>
 
@@ -748,6 +753,224 @@ Edges: E12, E23, E34, E45, E67, E78</code></pre>
             </div>
             <p>
               原因是一般 BST 若輸入資料已排序，樹高可能退化為 n；Red Black Tree 透過顏色規則與旋轉維持近似平衡，使樹高保持在 O(log n)。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-13">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>C++ 變數作用域、傳值與傳參考</h2>
+              <p>配分 30 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請追蹤下列 C++ 程式，列出輸出結果，並說明每項輸出對應數值的原因。
+            </p>
+            <pre class="prompt-pre"><code>#include &lt;iostream&gt;
+int a = 10;
+void testA(int a) {
+  cout &lt;&lt; "1. a = " &lt;&lt; a &lt;&lt; endl;
+  a++;
+  cout &lt;&lt; "2. a = " &lt;&lt; a &lt;&lt; endl;
+}
+void testB(void) {
+  cout &lt;&lt; "3. a = " &lt;&lt; a &lt;&lt; endl;
+  a++;
+  cout &lt;&lt; "4. a = " &lt;&lt; a &lt;&lt; endl;
+}
+void testC(int &amp;a) {
+  cout &lt;&lt; "5. a = " &lt;&lt; a &lt;&lt; endl;
+  a++;
+  cout &lt;&lt; "6. a = " &lt;&lt; a &lt;&lt; endl;
+}
+int main() {
+  int a = 100;
+  cout &lt;&lt; "7. a = " &lt;&lt; a &lt;&lt; endl;
+  a++;
+  testC(a);
+  cout &lt;&lt; "8. a = " &lt;&lt; a &lt;&lt; endl;
+  a++;
+  testB();
+  cout &lt;&lt; "9. a = " &lt;&lt; a &lt;&lt; endl;
+  a++;
+  testA(a);
+  cout &lt;&lt; "10. a = " &lt;&lt; a &lt;&lt; endl;
+  return 0;
+}</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>輸出結果</h3>
+            <pre><code>7. a = 100
+5. a = 101
+6. a = 102
+8. a = 102
+3. a = 10
+4. a = 11
+9. a = 103
+1. a = 104
+2. a = 105
+10. a = 104</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>原因說明</h3>
+            <p>
+              全域變數 <code>a</code> 初值為 10；<code>main</code> 內又宣告區域變數 <code>a = 100</code>，在 <code>main</code> 中會優先使用此區域變數。
+            </p>
+            <p>
+              <code>main</code> 先輸出 100，接著 <code>a++</code> 變成 101。呼叫 <code>testC(a)</code> 時使用參考傳遞，因此函式內的 <code>a++</code> 會直接改到 <code>main</code> 的區域變數，所以依序輸出 101、102，回到 <code>main</code> 後第 8 行仍為 102。
+            </p>
+            <p>
+              接著 <code>main</code> 的 <code>a++</code> 變成 103。呼叫 <code>testB()</code> 時，函式內沒有區域參數 <code>a</code>，所以使用全域變數，輸出 10 後把全域變數改成 11，再輸出 11；這不影響 <code>main</code> 的區域變數。之後第 9 行輸出 103，再遞增為 104。<code>testA(a)</code> 是傳值呼叫，參數得到副本 104，函式內輸出 104、105，但不會改變 <code>main</code> 的 <code>a</code>，所以最後第 10 行輸出 104。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-14">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>兩矩形是否重疊的判斷邏輯</h2>
+              <p>配分 20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              給定方形 A 的左上角座標 <code>(x1, y1)</code>、寬高 <code>(w1, h1)</code>，以及方形 B 的左上角座標 <code>(x2, y2)</code>、寬高 <code>(w2, h2)</code>，請設計判斷邏輯確認兩方形是否有重疊，有重疊回傳 true，否則回傳 false。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>判斷想法</h3>
+            <p>
+              以常見螢幕座標為例，左上角為起點，x 往右增加，y 往下增加。兩矩形不重疊只有四種情況：A 完全在 B 左邊、A 完全在 B 右邊、A 完全在 B 上方、A 完全在 B 下方。只要不是這四種情況，就代表有面積重疊。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>虛擬碼</h3>
+            <pre><code>boolean overlap(x1, y1, w1, h1, x2, y2, w2, h2):
+  if x1 + w1 &lt;= x2:
+    return false
+  if x2 + w2 &lt;= x1:
+    return false
+  if y1 + h1 &lt;= y2:
+    return false
+  if y2 + h2 &lt;= y1:
+    return false
+  return true</code></pre>
+            <p>
+              這裡使用 <code>&lt;=</code> 表示若兩矩形只是邊界相接，沒有共同面積，則視為不重疊。若題目把「碰到邊」也算重疊，可將 <code>&lt;=</code> 改為 <code>&lt;</code>。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-15">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>Pascal 遞迴呼叫、記憶化與分支圖</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              以圖示法表示遞迴程式呼叫執行過程，給定 <code>n = 4</code>、<code>k = 2</code> 呼叫 <code>pascal(4,2)</code>，求最後回傳結果，並依產生的堆疊與分支圖呈現呼叫過程。
+            </p>
+            <pre class="prompt-pre"><code>R = {}
+def pascal(n, k):
+  if k == 0 or k == n:
+    return 1
+  if (n, k) in R:
+    return R[(n, k)]
+  R[(n, k)] = pascal(n-1, k-1) + pascal(n-1, k)
+  return R[(n, k)]</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>分支圖與回傳值</h3>
+            <pre><code>pascal(4,2)
+├─ pascal(3,1)
+│  ├─ pascal(2,0) = 1
+│  └─ pascal(2,1)
+│     ├─ pascal(1,0) = 1
+│     └─ pascal(1,1) = 1
+│     ⇒ R[(2,1)] = 2
+│  ⇒ R[(3,1)] = 1 + 2 = 3
+└─ pascal(3,2)
+   ├─ pascal(2,1) = 2  (由 R 直接取出)
+   └─ pascal(2,2) = 1
+   ⇒ R[(3,2)] = 2 + 1 = 3
+
+R[(4,2)] = 3 + 3 = 6</code></pre>
+            <p>
+              因此最後回傳值為 <strong>6</strong>。其中 <code>pascal(2,1)</code> 第一次計算後被存入 <code>R</code>，第二次遇到相同參數時直接取出，可避免重複展開遞迴。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-16">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>以隱私保護方式比較財富</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              張三和李四要比較誰較有錢，但不直接說出財富金額。假設一個陣列序號代表一個財富單位，擁有該單位則標記為 T。張三擁有 4 千萬，標記 1 到 4 為 T；李四擁有 6 千萬，標記 1 到 6 為 T。請設計虛擬碼，讓兩人運用此程式驗證誰較有錢。
+            </p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th>張三</th><td>T</td><td>T</td><td>T</td><td>T</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><th>李四</th><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>-</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="answer-block">
+            <h3>比較原理</h3>
+            <p>
+              若 A 有 a 個單位，A 只需查看 B 的第 a 個格子：若是 T，表示 B 至少有 a 個單位；若不是 T，表示 B 少於 a 個單位。同理，B 只需查看 A 的第 b 個格子。雙方不需要公開完整金額，只需要公開必要的檢查結果。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>虛擬碼</h3>
+            <pre><code>function comparePrivate(A_name, A_array, a, B_name, B_array, b):
+  A_sees_B = B_array[a]
+  B_sees_A = A_array[b]
+
+  if A_sees_B == 'T' and B_sees_A != 'T':
+    return B_name + " 較有錢"
+
+  if A_sees_B != 'T' and B_sees_A == 'T':
+    return A_name + " 較有錢"
+
+  if A_sees_B == 'T' and B_sees_A == 'T':
+    return "兩者財富相同"
+
+  return "輸入資料不一致，需重新檢查"</code></pre>
+            <p>
+              代入題目資料時，張三查看李四第 4 格，結果為 T，表示李四至少有 4 千萬；李四查看張三第 6 格，結果為 -，表示張三不到 6 千萬。因此可判定 <strong>李四較有錢</strong>。
             </p>
           </section>
         </article>
