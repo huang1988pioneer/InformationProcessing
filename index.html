@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>115年關務三等資訊處理 - 資料庫應用詳解</title>
+    <title>115年關務三等資訊處理 - 題解整理</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -23,6 +23,7 @@
           <button class="tree-item level-3 active" data-target="top" type="button">三等</button>
           <button class="tree-item level-4 active" data-target="top" type="button">資訊處理</button>
           <button class="tree-item level-5 active" data-target="top" type="button">資料庫應用</button>
+          <button class="tree-item level-5" data-target="question-5" type="button">資通網路</button>
         </nav>
 
         <div class="toc">
@@ -31,22 +32,26 @@
           <button data-target="question-2" type="button">二、BCNF</button>
           <button data-target="question-3" type="button">三、ETL 與資料收集</button>
           <button data-target="question-4" type="button">四、資料字典</button>
+          <button data-target="question-5" type="button">資通一、DHCP</button>
+          <button data-target="question-6" type="button">資通二、蜂巢式系統</button>
+          <button data-target="question-7" type="button">資通三、數位簽章</button>
+          <button data-target="question-8" type="button">資通四、TCP</button>
         </div>
       </aside>
 
       <main class="content" id="top">
         <header class="hero">
           <div>
-            <p class="path">115年 / 關務 / 三等 / 資訊處理 / 資料庫應用</p>
-            <h1>115年公務人員特種考試關務人員三等考試：資料庫應用詳解</h1>
+            <p class="path">115年 / 關務 / 三等 / 資訊處理</p>
+            <h1>115年公務人員特種考試關務人員三等考試：題解整理</h1>
             <p class="summary">
-              本頁收錄題目原文與四題申論解題方向，包含 SQL View、BCNF 判斷與異常、資料倉儲 ETL，以及資料字典。
+              本頁收錄題目原文與申論解題方向，包含資料庫應用的 SQL View、BCNF、ETL、資料字典，以及資通網路的 DHCP、蜂巢式系統、數位簽章與 TCP。
             </p>
           </div>
-          <div class="score-card" aria-label="配分">
-            <span>總分</span>
-            <strong>100</strong>
-            <small>30 + 30 + 20 + 20</small>
+          <div class="score-card" aria-label="收錄題數">
+            <span>收錄</span>
+            <strong>8</strong>
+            <small>資料庫 4 題 + 資通網路 4 題</small>
           </div>
         </header>
 
@@ -65,7 +70,7 @@
           </div>
           <div>
             <span>科目</span>
-            <strong>資料庫應用</strong>
+            <strong>資料庫應用、資通網路</strong>
           </div>
         </section>
 
@@ -300,6 +305,157 @@ a2  b1  c1  d3</code></pre>
             <p>
               使用者通常不直接修改資料字典，而是透過 SQL DDL，例如 <code>CREATE TABLE</code>、<code>ALTER TABLE</code>、<code>CREATE INDEX</code>
               讓 DBMS 更新。查詢時則可透過標準的 <code>INFORMATION_SCHEMA</code> 或各資料庫提供的系統 catalog view 查看。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-5">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>DHCP 自動設定與 169.254 位址</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              小華買了一台新的筆記型電腦，插上房間的網路線準備參加線上課程。這台電腦必須透過家中的路由器取得正確的網路參數才能連上網際網路。請說明新電腦通常透過路由器內建的何種服務自動取得 IP 位址，以及若 IP 位址為 169.254.1.5 且無法開啟網頁，代表發生什麼問題。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>自動取得 IP 的服務</h3>
+            <p>
+              新電腦接上有線網路時，通常會透過路由器內建的 <strong>DHCP</strong>（Dynamic Host Configuration Protocol，動態主機設定協定）自動取得網路參數。
+            </p>
+            <p>
+              DHCP 的目的，是自動分配 IP 位址，並提供子網路遮罩、預設閘道與 DNS 伺服器等設定，讓電腦能加入區域網路並連上網際網路，也可避免使用者手動設定錯誤。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>169.254.1.5 的意義</h3>
+            <p>
+              若電腦取得 <code>169.254.1.5</code>，代表它沒有成功從路由器的 DHCP 伺服器取得 IP 位址。<code>169.254.x.x</code> 屬於 APIPA（Automatic Private IP Addressing，自動私有 IP 位址），是 DHCP 請求失敗後由作業系統自動產生的位址。
+            </p>
+            <p>
+              可能原因包括路由器 DHCP 功能未啟用、網路線或網路孔故障、路由器異常，或電腦與路由器之間無法正常通訊。因為沒有取得正確的預設閘道與 DNS，電腦通常無法開啟網頁。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-6">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>蜂巢式行動通訊系統元件與位置更新</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              在蜂巢式系統中，行動通訊系統包含 MSC、AUC、EIR、HLR 與 VLR 五個元件。請分別說明其作用，並說明手機移動至註冊區域外時，MS 與當地 BS 之間如何維持通訊功能。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>五個元件的作用</h3>
+            <ul>
+              <li><strong>MSC，Mobile Switching Center：</strong>負責通話交換、路由選擇、連線控制，並與其他電話網路或行動網路互通。</li>
+              <li><strong>AUC，Authentication Center：</strong>負責使用者身分驗證，確認 SIM 卡與用戶是否合法，防止冒用或非法接取。</li>
+              <li><strong>EIR，Equipment Identity Register：</strong>儲存手機設備 IMEI 資訊，用來判斷設備是否合法，例如封鎖失竊或非法手機。</li>
+              <li><strong>HLR，Home Location Register：</strong>儲存用戶永久資料，例如電話號碼、服務項目、SIM 身分資料與目前所在的大致位置。</li>
+              <li><strong>VLR，Visitor Location Register：</strong>暫存進入該區域的外來用戶資料，讓使用者在非本籍區域也能撥打、接聽與使用服務。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>移動到其他城市時的步驟</h3>
+            <p>
+              當手機偵測到目前基地台屬於新的註冊區域，會透過當地基地台向網路發出位置更新或註冊請求。當地 MSC/VLR 接收後，向原本所屬的 HLR 查詢用戶資料，HLR 再將必要資料傳送給新的 VLR。
+            </p>
+            <p>
+              接著 AUC 進行 SIM 與用戶身分驗證，EIR 可檢查手機 IMEI 是否為合法設備。驗證成功後，新 VLR 暫存小明的用戶與位置資料，HLR 更新小明目前所在的 VLR 位址，舊 VLR 的暫存資料可被刪除。完成後，小明即可在新城市正常使用通訊服務。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-7">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>數位簽章驗證流程與安全特性</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              數位簽章運用非對稱加密技術確認電子文件身分與內容。小明先將原始文件做 Hash 得到訊息摘要，再用自己的私鑰加密摘要生成數位簽章，並將原始文件與數位簽章一併寄出。請說明小美收到後的驗證程序，以及此程序可保證哪些資訊安全特性。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>小美的驗證程序</h3>
+            <p>
+              小美收到原始文件與數位簽章後，先對收到的原始文件進行相同 Hash 運算，產生新的訊息摘要。接著取得小明的公開金鑰，並用該公開金鑰解開數位簽章，得到小明簽署時加密的訊息摘要。
+            </p>
+            <p>
+              最後，小美比較兩個摘要：一個是自己重新計算得到的摘要，另一個是從數位簽章解出的摘要。若兩者相同，表示文件未被竄改，且簽章確實可由小明公開金鑰驗證；若不同，則代表文件可能遭竄改或簽章來源不正確。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>保證的安全特性</h3>
+            <ul>
+              <li><strong>完整性，Integrity：</strong>文件只要被修改，Hash 值就會不同。摘要一致表示傳輸後內容未被竄改。</li>
+              <li><strong>身分鑑別，Authentication：</strong>簽章由小明私鑰產生，若能以小明公開金鑰驗證，表示簽章可對應到小明的身分。</li>
+              <li><strong>不可否認性，Non-repudiation：</strong>因為只有小明應持有私鑰，簽章可作為小明曾簽署該文件的證明，使其較難事後否認。</li>
+            </ul>
+            <p>
+              需要注意的是，數位簽章本身主要不保證機密性，因為原始文件通常仍以明文一併傳送；若要保密，還需另行加密文件內容。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-8">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>TCP 三向交握與逾時重傳</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              小明使用有線網路觀看高畫質串流影片，播放軟體採用 TCP 確保資料傳輸可靠。請描述影片資料開始傳送前的三向交握流程與目的；若傳送途中部分資料遺失且傳送端未在一定時間內收到 ACK，請說明傳送端會採取什麼動作。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>三向交握流程與目的</h3>
+            <p>
+              TCP 建立連線時，第一步由小明的電腦送出 <code>SYN</code> 給串流伺服器，表示想建立連線並告知自己的初始序號。第二步伺服器回傳 <code>SYN + ACK</code>，表示同意建立連線、確認收到用戶端的 SYN，並提供伺服器自己的初始序號。第三步用戶端再回傳 <code>ACK</code>，確認收到伺服器的 SYN。
+            </p>
+            <p>
+              三向交握的目的，是確認雙方都存在且能互相通訊，同步雙方序號，建立可靠的 TCP 連線，並為後續資料傳輸、確認應答與重傳機制做準備。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>資料遺失時的處理</h3>
+            <p>
+              當影片傳送途中因干擾造成部分資料遺失，傳送端在一定時間內沒有收到接收端的 ACK，會進行 <strong>逾時重傳</strong>（Timeout Retransmission），重新傳送尚未被確認收到的資料封包。
+            </p>
+            <p>
+              這樣做的目的，是補回遺失資料，確保接收端能收到完整內容，維持 TCP 的可靠傳輸特性，避免資料因封包遺失而出現缺漏或錯誤。
             </p>
           </section>
         </article>
