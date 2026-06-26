@@ -1068,6 +1068,249 @@ R[(4,2)] = 3 + 3 = 6</code></pre>
             </p>
           </section>
         </article>
+        <article class="question" id="question-22">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>演算法的有限性與五項特性</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請回答下列兩個演算法相關問題：程式設計師撰寫的程式是否必須滿足演算法應具備「有限性」（Finiteness）的特性？請詳細說明理由。演算法必須滿足五項特性，除「有限性」外，請寫出另外四項特性，並說明各項特性的意義。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>程式是否必須具備有限性</h3>
+            <p>
+              不一定。演算法的有限性是指對每一組合法輸入，演算法必須在有限步驟後停止並產生結果；但程式是演算法的實作形式之一，程式的目的不一定都是「算完就結束」。例如作業系統、伺服器、監控程式、事件迴圈與互動式應用程式，通常設計成持續執行，等待使用者輸入或外部事件，因此整個程式本身未必具有有限性。
+            </p>
+            <p>
+              若某段程式是在實作一個特定演算法，例如排序、搜尋、最短路徑或數值計算，則該段程式對合法輸入應能在有限時間內結束，才符合演算法的要求。因此應區分「程式整體」與「程式中實作演算法的部分」：程式不必全部都會自然終止，但演算法本身必須滿足有限性。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>除有限性外的四項特性</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>特性</th>
+                    <th>意義</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>輸入（Input）</td>
+                    <td>演算法可有零個或多個輸入，輸入是演算法處理問題所需的初始資料。</td>
+                  </tr>
+                  <tr>
+                    <td>輸出（Output）</td>
+                    <td>演算法至少要產生一個輸出，作為問題的答案或處理後的結果。</td>
+                  </tr>
+                  <tr>
+                    <td>明確性（Definiteness）</td>
+                    <td>每一個步驟都必須清楚、無歧義，執行者能明確知道下一步要做什麼。</td>
+                  </tr>
+                  <tr>
+                    <td>有效性（Effectiveness）</td>
+                    <td>每一個操作都必須基本且可實際執行，能在有限時間內完成，不可只是抽象或不可操作的描述。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </article>
+
+        <article class="question" id="question-23">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>虛擬碼 For 迴圈追蹤</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請根據下列虛擬碼程式段，回答程式段執行完後 <code>s</code> 的值、<code>i</code> 的值、<code>For i from 1 to 150 step 7 do</code> 共執行多少次，以及 <code>s ← s + i</code> 共執行多少次，所有答案均須說明原因或提供計算過程。
+            </p>
+            <pre class="prompt-pre"><code>Procedure X
+s ← 0
+For i from 1 to 150 step 7 do
+  s ← s + i
+End For
+Print s
+End X</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>迴圈值與次數</h3>
+            <p>
+              <code>i</code> 從 1 開始，每次增加 7，只要 <code>i ≤ 150</code> 就執行。因此實際加到 <code>s</code> 的數列為：
+            </p>
+            <pre><code>1, 8, 15, ..., 148</code></pre>
+            <p>
+              令第 <code>k</code> 次增加後的值為 <code>1 + 7k</code>，需滿足 <code>1 + 7k ≤ 150</code>，得到 <code>k ≤ 149 / 7 = 21.28...</code>，所以 <code>k = 0</code> 到 <code>21</code>，共 <strong>22 次</strong>。最後一次進入迴圈時 <code>i = 148</code>，再加 7 後變成 <code>155</code>，因 <code>155 &gt; 150</code> 而停止；若依此類虛擬碼保留迴圈控制變數的慣例，執行完後 <code>i = 155</code>。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>s 的計算</h3>
+            <p>
+              <code>s</code> 是等差級數總和，首項 1，末項 148，項數 22：
+            </p>
+            <pre><code>s = 22 × (1 + 148) / 2
+  = 11 × 149
+  = 1639</code></pre>
+            <p>
+              因此程式段執行完後 <strong><code>s = 1639</code></strong>。<code>For i from 1 to 150 step 7 do</code> 的迴圈主體共執行 <strong>22 次</strong>，而 <code>s ← s + i</code> 在每次進入迴圈時執行一次，所以也共執行 <strong>22 次</strong>。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-24">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>利用堆疊計算運算式</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              若下列前置式利用堆疊做計算，假設每個運算元都是一個阿拉伯數字，請寫出完整的計算過程與最終計算結果。
+            </p>
+            <pre class="prompt-pre"><code>1 2 * 3 4 5 / 6 3 - + - +</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>判讀說明</h3>
+            <p>
+              題目文字稱為前置式（prefix），但給出的符號序列是「運算元在前、運算子在後」，實際上符合後置式（postfix, Reverse Polish Notation）的格式。因此以下依後置式堆疊規則計算：遇到運算元就 push，遇到運算子就 pop 出右運算元與左運算元，計算後再 push 回堆疊。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>堆疊計算過程</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>讀入</th>
+                    <th>動作</th>
+                    <th>堆疊狀態</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>push 1</td><td>[1]</td></tr>
+                  <tr><td>2</td><td>push 2</td><td>[1, 2]</td></tr>
+                  <tr><td>*</td><td>1 * 2 = 2</td><td>[2]</td></tr>
+                  <tr><td>3</td><td>push 3</td><td>[2, 3]</td></tr>
+                  <tr><td>4</td><td>push 4</td><td>[2, 3, 4]</td></tr>
+                  <tr><td>5</td><td>push 5</td><td>[2, 3, 4, 5]</td></tr>
+                  <tr><td>/</td><td>4 / 5 = 0.8</td><td>[2, 3, 0.8]</td></tr>
+                  <tr><td>6</td><td>push 6</td><td>[2, 3, 0.8, 6]</td></tr>
+                  <tr><td>3</td><td>push 3</td><td>[2, 3, 0.8, 6, 3]</td></tr>
+                  <tr><td>-</td><td>6 - 3 = 3</td><td>[2, 3, 0.8, 3]</td></tr>
+                  <tr><td>+</td><td>0.8 + 3 = 3.8</td><td>[2, 3, 3.8]</td></tr>
+                  <tr><td>-</td><td>3 - 3.8 = -0.8</td><td>[2, -0.8]</td></tr>
+                  <tr><td>+</td><td>2 + (-0.8) = 1.2</td><td>[1.2]</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              最終堆疊只剩一個值，因此計算結果為 <strong>1.2</strong>，也就是 <strong>6/5</strong>。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-25">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>循序搜尋法與二元搜尋法比較</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請詳述循序搜尋法（sequential search）與二元搜尋法（binary search）的運作原理並比較其優缺點。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>循序搜尋法</h3>
+            <p>
+              循序搜尋法又稱線性搜尋。它從資料集合的第一筆開始，依序將每一筆資料與目標值比較；若找到相同值就回傳位置或表示成功，若檢查到最後一筆仍未找到，則表示搜尋失敗。此方法不要求資料事先排序，也可用於陣列、串列或一般線性資料集合。
+            </p>
+            <p>
+              其優點是概念簡單、實作容易、適用範圍廣，資料未排序時也能直接使用。缺點是效率較低，最壞情況需要檢查全部 <code>n</code> 筆資料，時間複雜度為 <strong>O(n)</strong>，資料量很大時搜尋速度會明顯變慢。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>二元搜尋法</h3>
+            <p>
+              二元搜尋法必須用在已排序的資料上。每次先取搜尋範圍中間位置的資料與目標值比較：若相等則搜尋成功；若目標值較小，就只搜尋左半部；若目標值較大，就只搜尋右半部。每比較一次就能排除約一半資料，直到找到目標或搜尋範圍為空為止。
+            </p>
+            <p>
+              其優點是效率高，最壞情況時間複雜度為 <strong>O(log n)</strong>，適合大量且已排序的資料。缺點是資料必須先排序，若資料經常新增、刪除或排序成本很高，維持排序會增加額外負擔；此外二元搜尋通常較適合可隨機存取的陣列，若用在鏈結串列，尋找中間位置本身可能耗費較多時間。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>優缺點比較</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>項目</th>
+                    <th>循序搜尋法</th>
+                    <th>二元搜尋法</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>資料條件</td>
+                    <td>不需排序</td>
+                    <td>必須已排序</td>
+                  </tr>
+                  <tr>
+                    <td>搜尋方式</td>
+                    <td>由前到後逐筆比較</td>
+                    <td>每次比較中間值並排除一半範圍</td>
+                  </tr>
+                  <tr>
+                    <td>時間複雜度</td>
+                    <td>平均與最壞為 O(n)</td>
+                    <td>平均與最壞為 O(log n)</td>
+                  </tr>
+                  <tr>
+                    <td>主要優點</td>
+                    <td>簡單、彈性高、資料未排序也可用</td>
+                    <td>搜尋速度快，適合大量靜態或少變動資料</td>
+                  </tr>
+                  <tr>
+                    <td>主要缺點</td>
+                    <td>資料量大時效率差</td>
+                    <td>需排序且較依賴隨機存取結構</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </article>
       </main>
     </div>
 
