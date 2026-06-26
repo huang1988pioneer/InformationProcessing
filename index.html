@@ -24,6 +24,7 @@
           <button class="tree-item level-4 active" data-target="top" type="button">資訊處理</button>
           <button class="tree-item level-5 active" data-target="top" type="button">資料庫應用</button>
           <button class="tree-item level-5" data-target="question-5" type="button">資通網路</button>
+          <button class="tree-item level-5" data-target="question-9" type="button">資料結構</button>
         </nav>
 
         <div class="toc">
@@ -36,6 +37,10 @@
           <button data-target="question-6" type="button">資通二、蜂巢式系統</button>
           <button data-target="question-7" type="button">資通三、數位簽章</button>
           <button data-target="question-8" type="button">資通四、TCP</button>
+          <button data-target="question-9" type="button">結構一、時間複雜度</button>
+          <button data-target="question-10" type="button">結構二、Complete Binary Tree</button>
+          <button data-target="question-11" type="button">結構三、Graph 表示法</button>
+          <button data-target="question-12" type="button">結構四、BST 與 RBT</button>
         </div>
       </aside>
 
@@ -45,13 +50,13 @@
             <p class="path">115年 / 關務 / 三等 / 資訊處理</p>
             <h1>115年公務人員特種考試關務人員三等考試：題解整理</h1>
             <p class="summary">
-              本頁收錄題目原文與申論解題方向，包含資料庫應用的 SQL View、BCNF、ETL、資料字典，以及資通網路的 DHCP、蜂巢式系統、數位簽章與 TCP。
+              本頁收錄題目原文與申論解題方向，包含資料庫應用、資通網路，以及資料結構的時間複雜度、樹、圖形與平衡搜尋樹。
             </p>
           </div>
           <div class="score-card" aria-label="收錄題數">
             <span>收錄</span>
-            <strong>8</strong>
-            <small>資料庫 4 題 + 資通網路 4 題</small>
+            <strong>12</strong>
+            <small>資料庫 4 題 + 資通網路 4 題 + 資料結構 4 題</small>
           </div>
         </header>
 
@@ -70,7 +75,7 @@
           </div>
           <div>
             <span>科目</span>
-            <strong>資料庫應用、資通網路</strong>
+            <strong>資料庫應用、資通網路、資料結構</strong>
           </div>
         </section>
 
@@ -456,6 +461,293 @@ a2  b1  c1  d3</code></pre>
             </p>
             <p>
               這樣做的目的，是補回遺失資料，確保接收端能收到完整內容，維持 TCP 的可靠傳輸特性，避免資料因封包遺失而出現缺漏或錯誤。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-9">
+          <div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>時間複雜度漸近符號</h2>
+              <p>配分 20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              請以時間複雜度之漸近符號觀念回答。前兩小題請以 Θ 與 n 表示時間複雜度；另比較甲演算法 <code>O(n log n)</code> 與乙演算法 <code>O(n^2)</code> 在實際執行時間上何時不一定由甲較快。
+            </p>
+            <pre class="prompt-pre"><code>sum=0;
+for (i=0; i&lt;n; i=i+2)
+  for (j=0; j&lt;i; j++)
+    sum=sum+1;</code></pre>
+            <pre class="prompt-pre"><code>sum=0; i=0;
+while (i&lt;n) {
+  for (j=i; j&lt;=n; j++)
+    sum=sum+1;
+  i=i+1;
+};</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>程式片段一</h3>
+            <p>
+              外層迴圈的 <code>i</code> 依序為 0、2、4，一直到小於 n。內層執行次數為 i 次，因此總次數約為 <code>0 + 2 + 4 + ... + (n 附近的偶數)</code>，這是等差級數，總和與 <code>n^2</code> 同階。
+            </p>
+            <p>
+              所以時間複雜度為 <strong>Θ(n^2)</strong>。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>程式片段二</h3>
+            <p>
+              <code>i</code> 從 0 增加到 n - 1。當 <code>i = 0</code> 時，內層約執行 n + 1 次；當 <code>i = 1</code> 時，約執行 n 次；依此類推，總次數約為 <code>(n + 1) + n + ... + 2</code>。
+            </p>
+            <p>
+              此總和仍為二次級數，因此時間複雜度為 <strong>Θ(n^2)</strong>。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>O(n log n) 不一定實際較快的情況</h3>
+            <p>
+              可列舉「資料量很小」的測試資料，例如只測試數十筆或數百筆資料。漸近複雜度描述的是 n 很大時的成長趨勢，並不表示每一個 n 都一定比較快。
+            </p>
+            <p>
+              若甲演算法雖為 <code>O(n log n)</code>，但常數成本很大，例如需要遞迴、額外記憶體配置、複雜資料結構或較差的快取區域性；而乙演算法雖為 <code>O(n^2)</code>，但實作簡單、常數小、資料都在連續陣列中，則在小型測試資料上乙的實際執行時間可能反而較短。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-10">
+          <div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>Complete Binary Tree 節點數界線證明</h2>
+              <p>配分 20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              何謂 Complete Binary Tree？假設單一節點的樹其樹高為 1，證明若 Complete Binary Tree 含 n 個節點且樹高為 h，則 <code>2^(h-1) ≤ n ≤ 2^h - 1</code>。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>定義</h3>
+            <p>
+              Complete Binary Tree（完全二元樹）是指除了最後一層外，每一層都必須填滿；最後一層的節點則由左至右依序填入，不可中間跳空。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>下界證明</h3>
+            <p>
+              若樹高為 h，代表第 h 層至少有一個節點。因為完全二元樹在最後一層以前都必須填滿，所以第 1 層到第 h - 1 層共有
+              <code>1 + 2 + 4 + ... + 2^(h-2) = 2^(h-1) - 1</code> 個節點。
+            </p>
+            <p>
+              再加上第 h 層至少 1 個節點，可得 <code>n ≥ 2^(h-1)</code>。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>上界證明</h3>
+            <p>
+              高度為 h 的二元樹若每一層都填滿，節點數最多。此時總節點數為
+              <code>1 + 2 + 4 + ... + 2^(h-1) = 2^h - 1</code>。
+            </p>
+            <p>
+              因此對任一高度為 h 的 Complete Binary Tree，都有 <strong><code>2^(h-1) ≤ n ≤ 2^h - 1</code></strong>。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-11">
+          <div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>Graph 的 adjacency matrix 與 adjacency multilist</h2>
+              <p>配分 30 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              以下圖 Graph 為例，分別繪出示意圖，說明程式如何以 adjacency matrix 和 adjacency multilist 儲存此 Graph。若 Graph 有 n 個節點與 e 個邊，請分別以 Big O 寫出兩種儲存法計算所有節點 Degree 的時間複雜度，以及儲存 Graph 的空間複雜度並比較優劣。
+            </p>
+            <div class="graph-demo" aria-label="Graph 節點與邊示意">
+              <span class="graph-node n1">1</span>
+              <span class="graph-node n2">2</span>
+              <span class="graph-node n3">3</span>
+              <span class="graph-node n4">4</span>
+              <span class="graph-node n5">5</span>
+              <span class="graph-node n6">6</span>
+              <span class="graph-node n7">7</span>
+              <span class="graph-node n8">8</span>
+              <span class="edge e12"></span>
+              <span class="edge e23"></span>
+              <span class="edge e34"></span>
+              <span class="edge e45"></span>
+              <span class="edge e67"></span>
+              <span class="edge e78"></span>
+            </div>
+          </section>
+
+          <section class="answer-block">
+            <h3>Adjacency Matrix</h3>
+            <p>
+              令節點順序為 1 到 8。若兩節點之間有邊，矩陣對應位置填 1，否則填 0。此圖的邊為
+              <code>(1,2)</code>、<code>(2,3)</code>、<code>(3,4)</code>、<code>(4,5)</code>、<code>(6,7)</code>、<code>(7,8)</code>。
+            </p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th>1</th><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><th>2</th><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><th>3</th><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><th>4</th><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><th>5</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><th>6</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                  <tr><th>7</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><th>8</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              以 adjacency matrix 計算所有節點 degree 時，可逐列掃描矩陣並計算每列 1 的個數，所以時間複雜度為 <strong>O(n^2)</strong>；空間複雜度也為 <strong>O(n^2)</strong>。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>Adjacency Multilist</h3>
+            <p>
+              Adjacency multilist 適合無向圖。每個頂點有一個指標指向與自己相接的第一條邊；每個邊節點記錄兩端點，例如 <code>ivex</code>、<code>jvex</code>，並用兩個 link 分別串到兩端點的下一條邊。
+            </p>
+            <pre><code>Vertex 1 → E12
+Vertex 2 → E12 → E23
+Vertex 3 → E23 → E34
+Vertex 4 → E34 → E45
+Vertex 5 → E45
+Vertex 6 → E67
+Vertex 7 → E67 → E78
+Vertex 8 → E78
+
+Edges: E12, E23, E34, E45, E67, E78</code></pre>
+            <p>
+              若用 multilist 計算所有節點 degree，可沿著每個頂點的邊串列計數，整體時間為 <strong>O(n + e)</strong>；儲存頂點表與邊節點所需空間也是 <strong>O(n + e)</strong>。
+            </p>
+            <p>
+              比較上，adjacency matrix 查詢兩點是否相鄰很快，且適合稠密圖，但空間固定為 <code>n^2</code>。Adjacency multilist 較適合稀疏圖，空間隨實際邊數成長，但查詢任兩點是否相鄰通常需要沿邊串列搜尋。
+            </p>
+          </section>
+        </article>
+
+        <article class="question" id="question-12">
+          <div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>Binary Search Tree 與 Red Black Tree</h2>
+              <p>配分 30 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>
+              從空集合開始，依數字串 1, 2, 3, 4, 5, 6, 7, 8 順序插入節點，建立並繪出 Binary Search Tree 與 Red Black Tree。再分別說明兩者在插入、刪除與搜尋數字等三操作的時間複雜度。
+            </p>
+          </section>
+
+          <section class="answer-block">
+            <h3>Binary Search Tree</h3>
+            <p>
+              依 1 到 8 遞增插入一般 BST，每個新節點都會成為前一節點的右子節點，因此形成向右傾斜的鏈狀樹。
+            </p>
+            <pre class="tree-pre"><code>1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+           \
+            7
+             \
+              8</code></pre>
+          </section>
+
+          <section class="answer-block">
+            <h3>Red Black Tree</h3>
+            <p>
+              依序插入 1 到 8 並依紅黑樹規則調整後，可得到下列其中一種合法結果。單線圓代表黑色節點，雙線圓代表紅色節點。
+            </p>
+            <div class="rbt-diagram" aria-label="Red Black Tree 插入 1 到 8 後的示意">
+              <div class="rbt-level">
+                <span class="rb-node black">4</span>
+              </div>
+              <div class="rbt-level">
+                <span class="rb-node red">2</span>
+                <span class="rb-node red">6</span>
+              </div>
+              <div class="rbt-level">
+                <span class="rb-node black">1</span>
+                <span class="rb-node black">3</span>
+                <span class="rb-node black">5</span>
+                <span class="rb-node black">7</span>
+              </div>
+              <div class="rbt-level rbt-tail">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span class="rb-node red">8</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="answer-block">
+            <h3>操作時間複雜度</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>資料結構</th>
+                    <th>搜尋</th>
+                    <th>插入</th>
+                    <th>刪除</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>一般 Binary Search Tree</td>
+                    <td>平均 O(log n)，最壞 O(n)</td>
+                    <td>平均 O(log n)，最壞 O(n)</td>
+                    <td>平均 O(log n)，最壞 O(n)</td>
+                  </tr>
+                  <tr>
+                    <td>Red Black Tree</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              原因是一般 BST 若輸入資料已排序，樹高可能退化為 n；Red Black Tree 透過顏色規則與旋轉維持近似平衡，使樹高保持在 O(log n)。
             </p>
           </section>
         </article>
