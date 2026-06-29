@@ -994,11 +994,11 @@ export const questions = [
     "title": "小農在地作物自產自銷系統 ER 圖、關聯綱要與 SQL",
     "points": "50 分",
     "year": "115年",
-    "examName": "國家安全情報人員考試",
-    "grade": "三等",
-    "category": "資訊組（選試英文）",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
     "subject": "資料庫應用",
-    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "subjectSlug": "115-immigration-third-database-application",
     "order": "一",
     "html": `<div class="question-head">
             <span class="number">一</span>
@@ -1070,11 +1070,11 @@ WHERE P.CID = ?;</code></pre>
     "title": "訂單商品評價表第一、第二與第三正規化",
     "points": "25 分",
     "year": "115年",
-    "examName": "國家安全情報人員考試",
-    "grade": "三等",
-    "category": "資訊組（選試英文）",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
     "subject": "資料庫應用",
-    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "subjectSlug": "115-immigration-third-database-application",
     "order": "二",
     "html": `<div class="question-head">
             <span class="number">二</span>
@@ -1131,11 +1131,11 @@ WHERE P.CID = ?;</code></pre>
     "title": "分散式資料庫三種通透性",
     "points": "15 分",
     "year": "115年",
-    "examName": "國家安全情報人員考試",
-    "grade": "三等",
-    "category": "資訊組（選試英文）",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
     "subject": "資料庫應用",
-    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "subjectSlug": "115-immigration-third-database-application",
     "order": "三",
     "html": `<div class="question-head">
             <span class="number">三</span>
@@ -1165,11 +1165,11 @@ WHERE P.CID = ?;</code></pre>
     "title": "交易故障時的資料庫回復方法",
     "points": "10 分",
     "year": "115年",
-    "examName": "國家安全情報人員考試",
-    "grade": "三等",
-    "category": "資訊組（選試英文）",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
     "subject": "資料庫應用",
-    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "subjectSlug": "115-immigration-third-database-application",
     "order": "四",
     "html": `<div class="question-head">
             <span class="number">四</span>
