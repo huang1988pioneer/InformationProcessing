@@ -987,6 +987,211 @@ export const questions = [
             <p>可能產生的消費爭議與法律問題包括商品與廣告不符、不實廣告或誇大宣傳、退換貨爭議、七日鑑賞期適用爭議、個人資料保護問題、AI 推薦與演算法操控、跨境購物糾紛、假貨與侵權商品、付款詐騙，以及直播主與平台責任問題。</p>
           </section>`
   }
+,
+  {
+    "id": 59,
+    "slug": "question-59",
+    "title": "小農在地作物自產自銷系統 ER 圖、關聯綱要與 SQL",
+    "points": "50 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等",
+    "category": "資訊組（選試英文）",
+    "subject": "資料庫應用",
+    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "order": "一",
+    "html": `<div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>小農在地作物自產自銷系統 ER 圖、關聯綱要與 SQL</h2>
+              <p>配分 50 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>農村眾小農想設計一套在地作物自產自銷系統。小農 Farmer 需登錄 FID、FNAME、FADDR、FACC；農地 Land 需登錄 LID、LSIZE 並知道擁有的小農；作物 Crop 由系統預先設定 CID，且同種作物 CPRICE、CNAME 相同，小農提供作物販售時需設定 PQTY；買家 Buyer 需登錄 BID、BNAME、BADDR、BACC，並可購買多種作物。請繪 ER 圖、轉換關聯式綱要、撰寫插入資料 SQL，以及查詢有賣美人花生的小農姓名與數量。</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>ER 圖說明</h3>
+            <pre class="diagram">Farmer(FID, FNAME, FADDR, FACC)
+  1 ── 擁有 ── N Land(LID, LSIZE)
+
+Farmer(FID) N ── 提供 ── N Crop(CID, CNAME, CPRICE)
+                     關係屬性：PQTY
+
+Buyer(BID, BNAME, BADDR, BACC)
+  N ── 購買 ── N 提供(FID, CID, PQTY)</pre>
+            <p>每一塊農地只能登記在一位小農名下，因此 Farmer 與 Land 是一對多。小農可提供多種作物，同一作物也可由多位小農提供，因此 Farmer 與 Crop 是多對多，並以「提供」關係記錄販售數量 PQTY。買家購買的是某位小農提供的某種作物，因此購買關係可連到提供清單。</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>關聯式綱要表</h3>
+            <ul>
+              <li><strong>Farmer(<u>FID</u>, FNAME, FADDR, FACC)</strong></li>
+              <li><strong>Land(<u>LID</u>, LSIZE, FID)</strong>，FID 為外鍵參照 Farmer(FID)。</li>
+              <li><strong>Crop(<u>CID</u>, CNAME, CPRICE)</strong></li>
+              <li><strong>Provide(<u>FID</u>, <u>CID</u>, PQTY)</strong>，FID 參照 Farmer(FID)，CID 參照 Crop(CID)。</li>
+              <li><strong>Buyer(<u>BID</u>, BNAME, BADDR, BACC)</strong></li>
+              <li><strong>Buy(<u>BID</u>, <u>FID</u>, <u>CID</u>)</strong>，BID 參照 Buyer(BID)，(FID, CID) 參照 Provide(FID, CID)。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>插入志明資料 SQL</h3>
+            <pre><code>INSERT INTO Farmer (FID, FNAME, FADDR, FACC)
+VALUES ('945', '志明', '臺灣尚水村嘉南平原路99號', '314159265');
+
+INSERT INTO Land (LID, LSIZE, FID)
+VALUES ('168', 400, '945');
+
+INSERT INTO Crop (CID, CNAME, CPRICE)
+VALUES ('88', '美人花生', 1000);
+
+INSERT INTO Provide (FID, CID, PQTY)
+VALUES ('945', '88', 2000);</code></pre>
+            <p>題目給定今年收成 2 公噸，因 PQTY 單位是公斤，所以應登錄為 2000 公斤。</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>查詢有賣美人花生的小農姓名與數量</h3>
+            <pre><code>SELECT F.FNAME, P.PQTY
+FROM Farmer AS F
+JOIN Provide AS P
+  ON F.FID = P.FID
+WHERE P.CID = ?;</code></pre>
+            <p>使用者查詢時輸入作物編號，例如美人花生的 CID 為 88，系統即可帶入參數查詢。</p>
+          </section>`
+  },
+  {
+    "id": 60,
+    "slug": "question-60",
+    "title": "訂單商品評價表第一、第二與第三正規化",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等",
+    "category": "資訊組（選試英文）",
+    "subject": "資料庫應用",
+    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "order": "二",
+    "html": `<div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>訂單商品評價表第一、第二與第三正規化</h2>
+              <p>配分 25 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>在一個電商訂單商品評價系統中，資料欄位包含 OID、PID、SID、Rating、RID、Comment、SName。原表不滿足第一正規化。請轉成 1NF 的 R1，並依功能相依 OID→SID、SID→SName、RID→Comment、RID→Rating，分別列出符合第二正規化與第三正規化的表格。</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>第一正規化 R1</h3>
+            <p>第一正規化要求每個欄位值皆為不可再分割的原子值，因此同一訂單中的多個商品評價需拆成多筆列。</p>
+            <p><strong>R1(<u>OID</u>, <u>PID</u>, SID, Rating, RID, Comment, SName)</strong></p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>OID</th><th>PID</th><th>SID</th><th>Rating</th><th>RID</th><th>Comment</th><th>SName</th></tr></thead>
+                <tbody>
+                  <tr><td>O101</td><td>P99</td><td>S01</td><td>2</td><td>R801</td><td>貨超爛</td><td>南陽大諸</td></tr>
+                  <tr><td>O101</td><td>P98</td><td>S01</td><td>4</td><td>R802</td><td>包裝好</td><td>南陽大諸</td></tr>
+                  <tr><td>O102</td><td>P99</td><td>S02</td><td>5</td><td>R403</td><td>出貨快</td><td>臺灣香薯</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="answer-block">
+            <h3>第二正規化</h3>
+            <p>R1 的主鍵可視為 (OID, PID)。因 OID→SID，且 SID→SName，商家資料與複合主鍵的一部分有關，需先拆出訂單對商家的資料。</p>
+            <ul>
+              <li><strong>R11(<u>OID</u>, SID, SName)</strong></li>
+              <li><strong>R12(<u>OID</u>, <u>PID</u>, RID, Rating, Comment)</strong></li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>第三正規化</h3>
+            <p>第三正規化需進一步移除非鍵屬性對非鍵屬性的相依。R11 中 SID→SName，R12 中 RID→Rating、Comment，因此再拆解如下：</p>
+            <ul>
+              <li><strong>R111(<u>OID</u>, SID)</strong></li>
+              <li><strong>R112(<u>SID</u>, SName)</strong></li>
+              <li><strong>R121(<u>OID</u>, <u>PID</u>, RID)</strong></li>
+              <li><strong>R122(<u>RID</u>, Rating, Comment)</strong></li>
+            </ul>
+          </section>`
+  },
+  {
+    "id": 61,
+    "slug": "question-61",
+    "title": "分散式資料庫三種通透性",
+    "points": "15 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等",
+    "category": "資訊組（選試英文）",
+    "subject": "資料庫應用",
+    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "order": "三",
+    "html": `<div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>分散式資料庫三種通透性</h2>
+              <p>配分 15 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>請就分散式資料庫的位置通透性（Location Transparency）、分割通透性（Fragmentation Transparency）、複製通透性（Replication Transparency），說明這些通透性的概念和特性。</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>說明</h3>
+            <ul>
+              <li><strong>位置通透性：</strong>使用者查詢資料時，不需要知道資料實際存放在哪一個節點或伺服器。系統會自動將查詢導向正確位置，因此資料搬移或節點配置調整時，應盡量不影響應用程式。</li>
+              <li><strong>分割通透性：</strong>資料表可能被水平分割或垂直分割後存放於不同節點，但使用者仍可像操作完整資料表一樣查詢。系統負責合併、重組或導向各片段，隱藏資料被切割的細節。</li>
+              <li><strong>複製通透性：</strong>同一份資料可能有多個副本存放於不同節點，以提升可用性、容錯與查詢效能。使用者不需知道有幾份副本或副本在哪裡，系統負責選擇副本、維持一致性並處理更新同步。</li>
+            </ul>
+          </section>`
+  },
+  {
+    "id": 62,
+    "slug": "question-62",
+    "title": "交易故障時的資料庫回復方法",
+    "points": "10 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等",
+    "category": "資訊組（選試英文）",
+    "subject": "資料庫應用",
+    "subjectSlug": "115-national-security-intelligence-third-database-application",
+    "order": "四",
+    "html": `<div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>交易故障時的資料庫回復方法</h2>
+              <p>配分 10 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>當資料庫管理系統進行交易（Transaction）時發生故障，為確保資料的原子性（Atomicity）與持續性（Durability），有兩種回復處理方法。請說明這兩種方法在尚未 COMMIT 之前會如何處理資料。</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>Deferred Update 與 Immediate Update</h3>
+            <ul>
+              <li><strong>延遲更新（Deferred Update）：</strong>交易尚未 COMMIT 前，不會把更新真正寫入資料庫，只先把更新內容記錄在日誌或暫存區。若交易故障且尚未提交，因資料庫尚未被修改，通常不需要 UNDO；若已提交但尚未完全寫入，則依日誌 REDO，以確保持續性。</li>
+              <li><strong>立即更新（Immediate Update）：</strong>交易尚未 COMMIT 前，更新可能已先寫入資料庫，因此必須使用 write-ahead logging，先記錄舊值與新值。若交易未提交就故障，系統需依日誌 UNDO，回復到交易前狀態以確保原子性；若交易已提交但部分資料尚未落盤，則需 REDO 以確保持續性。</li>
+            </ul>
+          </section>`
+  }
 ] satisfies ExamQuestion[];
 
 export const subjectSummaries = Array.from(
